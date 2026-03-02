@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talento Senior en Retail · Lo Que Ocurre Ahora · Alcampo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════ */
+:root {
+  --red:         #E8262A;
+  --red-d:       #B51E21;
+  --red-l:       #FFF1F1;
+  --cobalt:      #2563EB;
+  --cobalt-l:    #EEF3FF
+  --lime:        #A8CC3C;
+  --lime-l:      #F4FBE4;
+  --orange:     #F47B20;
+  --orange-l:   #FFF4E8;
+  --teal:       #0D9488;
+  --teal-l:     #EDFAFA;
+  --red:        #DC2626;
+  --red-l:      #FEF2F2;
+  --green:      #16A34A;
+  --green-l:    #F0FDF4;
+  --amber:      #D97706;
+  --amber-l:    #FFFBEB;
+  --charcoal:   #0F0F18;
+  --ink:        #1A1A28;
+  --mid:        #5A5A72;
+  --ghost:      #EFEFF4;
+  --paper:      #FAFAF9;
+  --white:      #FFFFFF;
+
+  --fblack: 'Archivo Black', sans-serif;
+  --fcond:  'Barlow Condensed', sans-serif;
+  --fbody:  'Archivo', sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fbody);background:var(--paper);color:var(--ink);line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--charcoal)}
+::-webkit-scrollbar-thumb{background:var(--red)}
+
+/* ═══ TYPOGRAPHY ══════════════════════════════════ */
+p{font-size:.96rem;line-height:1.82;color:#2a2a3c;margin-bottom:1rem;text-align:justify}
+p:last-child{margin-bottom:0}
+
+.eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem}
+.sec-title{font-family:var(--fblack);font-size:clamp(1.7rem,3.5vw,2.5rem);line-height:1.05;letter-spacing:-.02em;color:var(--charcoal)}
+.sub-h{font-family:var(--fblack);font-size:1.15rem;color:var(--charcoal);margin:2.5rem 0 .9rem;padding-bottom:.5rem;border-bottom:2px solid var(--ghost);letter-spacing:-.01em}
+
+/* ═══ HERO ════════════════════════════════════════ */
+.hero{
+  background:var(--charcoal);
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:68px 1fr auto;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;top:0;right:0;
+  width:46%;height:100%;
+  background:var(--red);
+  clip-path:polygon(16% 0,100% 0,100% 100%,0 100%);
+  z-index:0;
+}
+.hdots{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.1) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(90deg,transparent 42%,rgba(0,0,0,.4) 58%,black 100%);
+}
+/* badge strip top-right */
+.hero-badge-strip{
+  position:absolute;top:0;right:0;z-index:6;
+  width:46%;
+  display:flex;flex-direction:column;gap:0;
+  clip-path:polygon(16% 0,100% 0,100% 100%,0 100%);
+  padding:2.5rem 2.5rem 0 4rem;
+}
+.hbs-label{font-family:var(--fcond);font-weight:900;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem}
+.hbs-gen{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.55rem .9rem;border-radius:3px;
+  font-family:var(--fcond);font-weight:900;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:.35rem;opacity:.3;
+}
+.hbs-gen.active{opacity:1;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.hbs-gen.gz{background:var(--orange);color:#fff}
+.hbs-gen.ml{background:var(--cobalt);color:#fff}
+.hbs-gen.gx{background:#fff;color:var(--red-d);font-size:1.1rem}
+.hbs-gen.bb{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15)}
+.hbs-arrow{font-size:.7rem;opacity:.6}
+
+.htopbar{
+  position:relative;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3.5rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.htop-brand{display:flex;align-items:center;gap:.9rem}
+.htop-pill{background:var(--red);color:#fff;font-family:var(--fblack);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .75rem;border-radius:2px}
+.htop-part{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.htop-date{font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.06em}
+
+.hbody{
+  position:relative;z-index:10;
+  padding:3.5rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:center;
+}
+
+.hpre{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+.hpre-line{width:28px;height:2px;background:var(--orange)}
+.hpre-text{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+
+.hh1{font-family:var(--fcond);font-weight:900;font-size:clamp(3.5rem,7vw,6.5rem);line-height:.9;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:1.4rem}
+.hh1 span{display:block;color:#fff}
+.hh1 em{display:block;font-style:normal;background:#fff;color:var(--red-d);padding:.04em .14em;width:fit-content;margin-left:-.08em}
+
+.hsub{font-size:.9rem;color:rgba(255,255,255,.5);max-width:420px;line-height:1.75;font-family:var(--fbody)}
+.htag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
+.htag{border:1px solid rgba(255,255,255,.15);border-radius:2px;padding:.22rem .7rem;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:all .2s}
+.htag:hover{border-color:var(--orange);color:var(--orange)}
+
+.hright{display:flex;flex-direction:column;gap:.85rem}
+.hstat{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:5px;padding:1.1rem 1.3rem;
+  display:flex;align-items:center;gap:1.1rem;
+  backdrop-filter:blur(6px);transition:background .2s;
+}
+.hstat:hover{background:rgba(255,255,255,.1)}
+.hstat-n{font-family:var(--fcond);font-weight:900;font-size:2.9rem;line-height:1;min-width:5rem;text-align:center}
+.hstat-n.white{color:#fff}
+.hstat-n.orange{color:var(--orange)}
+.hstat-n.purple{color:#c4a0f0}
+.hstat-n.teal{color:#5eead4}
+.hstat-lab{font-size:.78rem;font-weight:600;color:#fff;margin-bottom:.12rem;line-height:1.35}
+.hstat-src{font-size:.65rem;color:rgba(255,255,255,.32)}
+
+.hbottom{
+  position:relative;z-index:10;
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:.85rem 3.5rem;
+  display:flex;gap:.4rem;flex-wrap:wrap;
+}
+
+/* ═══ PROGRESS BAR / MATURITY ════════════════════ */
+.maturity-strip{
+  display:flex;align-items:center;gap:0;
+  height:6px;border-radius:3px;overflow:hidden;
+  margin-top:.4rem;background:var(--ghost);
+  width:100%;
+}
+.mat-fill{height:100%;border-radius:3px;transform-origin:left;transform:scaleX(0);animation:grow .9s cubic-bezier(.34,1.4,.64,1) forwards}
+@keyframes grow{to{transform:scaleX(1)}}
+
+/* ═══ NAV ═════════════════════════════════════════ */
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:#fff;
+  border-bottom:3px solid var(--red);
+  box-shadow:0 2px 16px rgba(0,0,0,.07);
+}
+.nav-inner{
+  max-width:1320px;margin:0 auto;padding:0 2rem;
+  display:flex;overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.navl{
+  font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;color:var(--mid);
+  padding:.9rem 1rem;white-space:nowrap;
+  border-bottom:3px solid transparent;margin-bottom:-3px;
+  transition:color .2s,border-color .2s;
+}
+.navl:hover{color:var(--red)}
+.navl.on{color:var(--red);border-bottom-color:var(--red)}
+
+/* ═══ LAYOUT ══════════════════════════════════════ */
+.wrap{max-width:1320px;margin:0 auto;padding:0 2.5rem}
+
+.section{padding:5rem 0}
+.section+.section{border-top:none}
+
+.sec-head{display:grid;grid-template-columns:76px 1fr;margin-bottom:3rem}
+.sec-num{
+  background:var(--red);color:#fff;
+  font-family:var(--fcond);font-weight:900;font-size:4rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  padding:.1em .3em;min-width:76px;
+}
+.section:nth-child(2n) .sec-num{background:var(--cobalt)}
+.section:nth-child(2n) .eyebrow{color:var(--cobalt)}
+.section:nth-child(2n) .sec-head-r{border-top-color:var(--cobalt)}
+.section:nth-child(3n) .sec-num{background:var(--orange)}
+.section:nth-child(3n) .eyebrow{color:var(--orange)}
+.section:nth-child(3n) .sec-head-r{border-top-color:var(--orange)}
+.section:nth-child(4n) .sec-num{background:#A8CC3C}
+.section:nth-child(4n) .eyebrow{color:#7EA022}
+.section:nth-child(4n) .sec-head-r{border-top-color:#A8CC3C}
+
+.sec-head-r{
+  border-top:3px solid var(--red);
+  border-bottom:1px solid var(--ghost);
+  padding:.65rem 0 .65rem 1.4rem;
+}
+
+hr.div{border:none;height:3px;background:linear-gradient(90deg,var(--red),var(--orange),var(--cobalt),#A8CC3C);margin:0}
+
+/* ═══ TABLES ══════════════════════════════════════ */
+.tbl{overflow-x:auto;margin:1.5rem 0;border-radius:4px;border:1px solid #d8d8e8}
+table{width:100%;border-collapse:collapse;font-size:.855rem}
+thead{background:var(--charcoal)}
+thead th{
+  padding:.75rem 1rem;text-align:left;
+  font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);white-space:nowrap;
+}
+thead th:first-child{color:var(--orange)}
+tbody tr{transition:background .12s}
+tbody tr:nth-child(even){background:#F6F6FB}
+tbody tr:hover{background:var(--red-l)}
+tbody td{padding:.75rem 1rem;border-bottom:1px solid #EAEAF2;vertical-align:top;line-height:1.5;font-size:.855rem}
+tbody td:first-child{font-weight:700;color:var(--charcoal)}
+.tg{font-size:.7rem;font-weight:700;padding:.18rem .55rem;border-radius:2px;display:inline-block;white-space:nowrap}
+.tg-g{background:var(--green-l);color:#15803d}
+.tg-o{background:var(--amber-l);color:#92400e}
+.tg-r{background:var(--red-l);color:#b91c1c}
+.tg-p{background:var(--red-l);color:var(--red)}
+.tg-b{background:var(--cobalt-l);color:var(--cobalt)}
+.tg-t{background:var(--teal-l);color:var(--teal)}
+
+/* ═══ COMPANY CARDS ═══════════════════════════════ */
+.cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.2rem;margin:2rem 0}
+.cc{border-radius:5px;overflow:hidden;border:1px solid #d8d8e8;transition:transform .18s,box-shadow .18s}
+.cc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.cc-head{padding:1.2rem 1.4rem .9rem;position:relative}
+.cc-head.plum  {background:var(--red-d)}
+.cc-head.cobalt{background:var(--cobalt)}
+.cc-head.teal  {background:var(--teal)}
+.cc-head.orange{background:var(--orange)}
+.cc-head.dark  {background:var(--charcoal)}
+.cc-head.red   {background:var(--red)}
+.cc-name{font-family:var(--fcond);font-weight:900;font-size:2rem;text-transform:uppercase;letter-spacing:-.01em;color:#fff;line-height:1}
+.cc-sub{font-size:.7rem;color:rgba(255,255,255,.55);margin-top:.2rem;font-weight:500}
+.cc-pill{
+  position:absolute;top:.9rem;right:1.1rem;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+  color:#fff;font-size:.58rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:.22rem .6rem;border-radius:2px;max-width:160px;text-align:center;line-height:1.3;
+}
+.cc-body{padding:1.2rem 1.4rem;background:#fff}
+.cc-kv-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .8rem;margin-bottom:1rem}
+.cc-k{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.08rem}
+.cc-v{font-size:.84rem;font-weight:600;color:var(--charcoal)}
+.cc-quote{font-size:.84rem;font-style:italic;color:#3a3a52;line-height:1.65;padding:.85rem 1rem;background:var(--ghost);border-radius:3px;border-left:3px solid;margin-bottom:.9rem}
+.cc-quote.plum  {border-color:var(--red)}
+.cc-quote.cobalt{border-color:var(--cobalt)}
+.cc-quote.teal  {border-color:var(--teal)}
+.cc-quote.orange{border-color:var(--orange)}
+.cc-quote.dark  {border-color:var(--charcoal)}
+.cc-quote.red   {border-color:var(--red)}
+.cc-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.ctg{font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.2rem .6rem;border-radius:2px;border:1px solid}
+.ctg.p{color:var(--red);border-color:rgba(232,38,42,.25);background:var(--red-l)}
+.ctg.b{color:var(--cobalt);border-color:rgba(27,79,216,.25);background:var(--cobalt-l)}
+.ctg.t{color:var(--teal);border-color:rgba(13,148,136,.25);background:var(--teal-l)}
+.ctg.o{color:#7a3e00;border-color:rgba(244,123,32,.3);background:var(--orange-l)}
+.ctg.g{color:var(--green);border-color:rgba(22,163,74,.25);background:var(--green-l)}
+
+/* ═══ CALLOUT BOXES ═══════════════════════════════ */
+.callout{border-radius:5px;padding:1.4rem 1.6rem;margin:1.75rem 0;display:flex;gap:1.1rem;align-items:flex-start;border:2px solid}
+.callout.plum  {border-color:var(--red);background:var(--red-l)}
+.callout.cobalt{border-color:var(--cobalt);background:var(--cobalt-l)}
+.callout.orange{border-color:var(--orange);background:var(--orange-l)}
+.callout.teal  {border-color:var(--teal);background:var(--teal-l)}
+.callout.red   {border-color:var(--red);background:var(--red-l)}
+.callout.green {border-color:var(--green);background:var(--green-l)}
+.callout-icon{font-size:1.6rem;flex-shrink:0;margin-top:-.05rem}
+.callout-title{font-family:var(--fblack);font-size:.97rem;letter-spacing:-.01em;margin-bottom:.4rem}
+.callout-body{font-size:.875rem;color:#2c2c3e;line-height:1.72}
+.callout-body p{font-size:.875rem;text-align:left;margin-bottom:.5rem}
+.callout-body p:last-child{margin-bottom:0}
+
+/* ═══ HIGHLIGHT ROWS ══════════════════════════════ */
+.hbox{border-radius:4px;overflow:hidden;margin:1.75rem 0;border:1px solid #d8d8e8}
+.hbox-head{padding:.8rem 1.3rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.hbox-head.plum  {background:var(--red)}
+.hbox-head.cobalt{background:var(--cobalt)}
+.hbox-head.teal  {background:var(--teal)}
+.hbox-head.orange{background:var(--orange)}
+.hbox-row{display:flex;gap:.9rem;padding:.7rem 1.3rem;border-bottom:1px solid #EAEAF2;font-size:.88rem;color:var(--ink);line-height:1.55;align-items:flex-start;transition:background .12s}
+.hbox-row:last-child{border-bottom:none}
+.hbox-row:nth-child(even){background:#F6F6FB}
+.hbox-row:hover{background:var(--red-l)}
+.harr{flex-shrink:0;font-weight:900;font-size:.8rem;margin-top:.1rem}
+.harr.p{color:var(--red)}
+.harr.b{color:var(--cobalt)}
+.harr.t{color:var(--teal)}
+.harr.o{color:var(--orange)}
+
+/* ═══ STAT COMPARE SPLIT ══════════════════════════ */
+.split2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.75rem 0}
+@media(max-width:680px){.split2{grid-template-columns:1fr}}
+.scard{border-radius:5px;overflow:hidden;border:1px solid #d8d8e8}
+.scard-head{padding:1rem 1.3rem;color:#fff;font-family:var(--fblack);font-size:1rem}
+.scard-head.plum  {background:var(--red)}
+.scard-head.cobalt{background:var(--cobalt)}
+.scard-head.teal  {background:var(--teal)}
+.scard-head.orange{background:var(--orange)}
+.scard-body{background:#fff;padding:.4rem 0}
+.scard-row{padding:.65rem 1.3rem;border-bottom:1px solid var(--ghost);font-size:.875rem;color:#2c2c3e;display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+.scard-row:last-child{border-bottom:none}
+.scard-row b{flex-shrink:0;font-size:.85rem}
+
+/* ═══ METRIC BARS ═════════════════════════════════ */
+.bars{margin:1.75rem 0;display:flex;flex-direction:column;gap:.8rem}
+.bar-row{display:grid;grid-template-columns:1.8rem 1fr 3.2rem;align-items:center;gap:1rem}
+.bar-n{font-family:var(--fcond);font-weight:900;font-size:1.5rem;color:var(--red);opacity:.35;text-align:right;line-height:1}
+.bar-info{display:flex;flex-direction:column;gap:.32rem}
+.bar-label{font-size:.87rem;font-weight:600;color:var(--charcoal)}
+.bar-track{height:7px;background:var(--ghost);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transform-origin:left;transform:scaleX(0);animation:grow .95s cubic-bezier(.34,1.4,.64,1) forwards}
+.bar-fill.p{background:linear-gradient(90deg,var(--red),#ff6b6e)}
+.bar-fill.b{background:linear-gradient(90deg,var(--cobalt),#60a5fa)}
+.bar-fill.t{background:linear-gradient(90deg,var(--teal),#34d4c2)}
+.bar-fill.o{background:linear-gradient(90deg,var(--orange),#fbbf24)}
+.bar-pct{font-family:var(--fcond);font-weight:900;font-size:1.15rem;color:var(--charcoal);text-align:right}
+
+/* ═══ TREND CARDS ═════════════════════════════════ */
+.trends{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin:1.75rem 0}
+.trend{border-radius:5px;overflow:hidden;transition:transform .18s}
+.trend:hover{transform:translateY(-3px)}
+.trend-h{padding:1rem 1.2rem .75rem;display:flex;gap:.7rem;align-items:flex-start}
+.trend-h.p {background:var(--red)}
+.trend-h.b {background:var(--cobalt)}
+.trend-h.o {background:var(--orange)}
+.trend-h.t {background:var(--teal)}
+.trend-h.r {background:var(--red)}
+.trend-h.dk{background:var(--charcoal)}
+.trend-n{font-family:var(--fcond);font-weight:900;font-size:2rem;color:rgba(255,255,255,.25);line-height:1;flex-shrink:0}
+.trend-meta{}
+.trend-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.18rem}
+.trend-name{font-family:var(--fblack);font-size:.95rem;color:#fff;line-height:1.15}
+.trend-body{padding:.95rem 1.2rem;background:#fff;border:1px solid #d8d8e8;border-top:none;border-radius:0 0 5px 5px;font-size:.855rem;color:#3a3a52;line-height:1.68}
+
+/* ═══ BIG QUOTE ═══════════════════════════════════ */
+.bquote{
+  border-left:4px solid var(--red);padding:1.25rem 1.75rem;
+  background:var(--red-l);border-radius:0 5px 5px 0;
+  margin:1.75rem 0;font-style:italic;
+  font-size:.97rem;color:#2a2a3c;line-height:1.8;
+}
+.bquote-attr{font-style:normal;font-size:.75rem;font-weight:700;color:var(--mid);margin-top:.6rem;display:block}
+
+/* ═══ MATURITY TABLE ══════════════════════════════ */
+.mat-grid{display:flex;flex-direction:column;gap:0;margin:1.75rem 0;border:1px solid #d8d8e8;border-radius:5px;overflow:hidden}
+.mat-row{display:grid;grid-template-columns:160px 1fr 140px;align-items:center;border-bottom:1px solid #EAEAF2;transition:background .12s}
+.mat-row:last-child{border-bottom:none}
+.mat-row:hover{background:var(--red-l)}
+.mat-row.header{background:var(--charcoal)}
+.mat-cell{padding:.8rem 1.1rem;font-size:.855rem}
+.mat-cell.co{font-weight:700;color:var(--charcoal)}
+.mat-header-cell{padding:.75rem 1.1rem;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.mat-header-cell:first-child{color:var(--orange)}
+.mat-bar-wrap{padding:.6rem 1.1rem;display:flex;flex-direction:column;gap:.25rem}
+.mat-label{font-size:.63rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+
+/* ═══ SOURCES ═════════════════════════════════════ */
+.src-grid{columns:2;gap:2rem;margin:1.5rem 0}
+@media(max-width:680px){.src-grid{columns:1}}
+.src{break-inside:avoid;padding:.5rem 0;border-bottom:1px solid var(--ghost);font-size:.82rem;color:#3a3a52;display:flex;gap:.55rem;align-items:flex-start}
+.src::before{content:'—';color:var(--red);font-weight:700;flex-shrink:0}
+
+/* ═══ SCROLL ANIM ═════════════════════════════════ */
+.up{opacity:0;transform:translateY(26px);transition:opacity .5s ease,transform .5s ease}
+.up.in{opacity:1;transform:none}
+
+/* ═══ FOOTER ══════════════════════════════════════ */
+footer{background:var(--charcoal);color:rgba(255,255,255,.3);text-align:center;padding:3rem 2rem;font-size:.75rem;line-height:2}
+footer strong{color:#fff}
+footer .pu{color:#ff9a9b}
+
+/* ═══ RESPONSIVE ══════════════════════════════════ */
+@media(max-width:920px){
+  .hero::after{display:none}
+  .hbody{grid-template-columns:1fr;padding:2.5rem 2rem;gap:2rem}
+  .hright{display:grid;grid-template-columns:1fr 1fr}
+  .htopbar,.hbottom{padding-left:1.5rem;padding-right:1.5rem}
+  .hero-badge-strip{display:none}
+  .wrap{padding:0 1.25rem}
+  .section{padding:3rem 0}
+  .cc-grid{grid-template-columns:1fr}
+  .sec-num{font-size:2.8rem;min-width:58px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hdots"></div>
+
+  <div class="hero-badge-strip">
+    <div class="hbs-label">Generaciones en el retail</div>
+    <div class="hbs-gen gz"><span>Gen Z · 1997–2006</span><span class="hbs-arrow">↑ 90% del EB</span></div>
+    <div class="hbs-gen ml"><span>Millennials · 1981–1996</span></div>
+    <div class="hbs-gen gx active"><span>✦ Gen X · 1964–1980 ✦</span><span class="hbs-arrow">← este informe</span></div>
+    <div class="hbs-gen bb"><span>Boomers · 1946–1963</span></div>
+  </div>
+
+  <div class="htopbar">
+    <div class="htop-brand">
+      <span class="htop-pill">Research</span>
+      <span class="htop-part">Alcampo · Dept. de Personas</span>
+    </div>
+    <span class="htop-date">Febrero 2026 · Parte II</span>
+  </div>
+
+  <div class="hbody">
+    <div>
+      <div class="hpre"><div class="hpre-line"></div><span class="hpre-text">Qué está pasando ahora mismo</span></div>
+      <h1 class="hh1">
+        <span>Lo que hace</span>
+        <em>el sector</em>
+        <span>con el talento</span>
+        <span>senior hoy</span>
+      </h1>
+      <p class="hsub">Programas activos, certificaciones reales y datos duros sobre cómo los grandes retailers europeos gestionan ya a sus trabajadores Gen X y 50+. Sin recomendaciones futuras — solo lo que ocurre en 2024–2026.</p>
+      <div class="htag-row">
+        <span class="htag">B&amp;Q — 33 años de modelo</span>
+        <span class="htag">Lidl 55/Redefined 2024</span>
+        <span class="htag">IKEA Reskilling 8.500</span>
+        <span class="htag">GeeX Study Polonia 2026</span>
+        <span class="htag">AARP–LinkedIn dic 2025</span>
+        <span class="htag">Auchan Group</span>
+        <span class="htag">Schneider OCDE 2024</span>
+      </div>
+    </div>
+
+    <div class="hright">
+      <div class="hstat">
+        <div class="hstat-n purple">30%</div>
+        <div>
+          <div class="hstat-lab">De los trabajadores activos polacos tienen 45–59 años</div>
+          <div class="hstat-src">GeeX Study Polonia · enero 2026</div>
+        </div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n orange">85,4%</div>
+        <div>
+          <div class="hstat-lab">Retención al año en trabajadores 50+ (vs 70,6% en menores)</div>
+          <div class="hstat-src">AARP–LinkedIn · diciembre 2025</div>
+        </div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n white">35%</div>
+        <div>
+          <div class="hstat-lab">De la plantilla de B&amp;Q tiene más de 50 años — política activa</div>
+          <div class="hstat-src">UK Gov / DWP · 2024</div>
+        </div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n teal">−2M</div>
+        <div>
+          <div class="hstat-lab">Trabajadores que perderá Polonia en la próxima década</div>
+          <div class="hstat-src">GeeX / Verita HR · 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hbottom">
+    <span class="htag">Gen X (44–60 años)</span>
+    <span class="htag">Memoria organizativa</span>
+    <span class="htag">Retención 50+</span>
+    <span class="htag">Programas phased retirement</span>
+    <span class="htag">Age-inclusive accreditation</span>
+    <span class="htag">Reverse mentoring</span>
+    <span class="htag">Crisis demográfica Polonia</span>
+    <span class="htag">Edadismo en ATS</span>
+  </div>
+</header>
+
+<hr class="div">
+
+<!-- ══ NAV ════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="navl" href="#datos">Datos del mercado</a>
+    <a class="navl" href="#bq">B&amp;Q — El modelo</a>
+    <a class="navl" href="#lidl">Lidl 55/Redefined</a>
+    <a class="navl" href="#otros">Otros retailers</a>
+    <a class="navl" href="#schneider">Schneider / OCDE</a>
+    <a class="navl" href="#datos-duros">Investigación reciente</a>
+    <a class="navl" href="#comparativa">Comparativa</a>
+    <a class="navl" href="#genz-vs-genx">Gen Z vs Gen X</a>
+    <a class="navl" href="#auchan">Posición Auchan</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ══ 01 · DATOS DEL MERCADO ═══════════════════════════════════════════════ -->
+<section class="section up" id="datos">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">El contexto estructural que lo explica todo</div>
+      <h2 class="sec-title">Por qué el talento senior ya no es opcional</h2>
+    </div>
+  </div>
+
+  <p>El sector retail europeo ha pasado la última década diseñando su employer branding casi exclusivamente para captar a Gen Z. Mientras tanto, el grupo que opera realmente las tiendas —trabajadores de 44 a 60 años— ha sido sistemáticamente ignorado en la estrategia de talento. En 2025–2026, esto empieza a cambiar, pero desde una posición de retraso significativo.</p>
+
+  <div class="sub-h">La situación en cifras reales — 2024/2025</div>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Indicador</th><th>Dato</th><th>Fuente</th><th>Qué significa para el retail</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Gen X como % de activos en Polonia</td>
+          <td><span class="tg tg-p">~30% (45–59 años)</span></td>
+          <td>Verita HR / GeeX, ene 2026</td>
+          <td>Columna vertebral operativa de las tiendas polacas</td>
+        </tr>
+        <tr>
+          <td>Pérdida proyectada de trabajadores PL</td>
+          <td><span class="tg tg-r">−2 millones en 10 años</span></td>
+          <td>GeeX Study, 2026</td>
+          <td>Sin retención senior, el retail no tiene sustituto a tiempo</td>
+        </tr>
+        <tr>
+          <td>Tasa empleo 55–64 Europa</td>
+          <td><span class="tg tg-g">65,3% — récord dic 2024</span></td>
+          <td>EDGE Cert Foundation, abr 2025</td>
+          <td>Los 50+ están trabajando más que nunca; hay que captarlos</td>
+        </tr>
+        <tr>
+          <td>Tasa empleo 50–64 Polonia</td>
+          <td><span class="tg tg-o">64,7% — por debajo media UE</span></td>
+          <td>AGE Platform Europe, 2023</td>
+          <td>Polonia tiene brecha que cerrar respecto al estándar europeo</td>
+        </tr>
+        <tr>
+          <td>Retención al año — trabajadores 50+</td>
+          <td><span class="tg tg-g">85,4% vs 70,6% (&lt;50)</span></td>
+          <td>AARP–LinkedIn, dic 2025</td>
+          <td>El 50+ rota un 20% menos — ahorro directo en coste de rotación</td>
+        </tr>
+        <tr>
+          <td>Empleos que irán a trabajadores 55+ en los 2030s</td>
+          <td><span class="tg tg-p">150 millones globalmente</span></td>
+          <td>WEF / McKinsey, 2023</td>
+          <td>Tendencia estructural imparable; el retail será de los más afectados</td>
+        </tr>
+        <tr>
+          <td>% Gen X que cree que no cobra justamente</td>
+          <td><span class="tg tg-r">31,3% — el más alto de todas las generaciones</span></td>
+          <td>iHire, 2025</td>
+          <td>El principal desconector de este grupo no es la edad — es la equidad salarial</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout plum">
+    <div class="callout-icon">🧠</div>
+    <div>
+      <div class="callout-title">El diagnóstico de los expertos polacos — GeeX Study, enero 2026</div>
+      <p class="callout-body">En el summit «Polska Moc Biznesu» de enero 2026, el experto Tomasz Szklarski (Enpulse, creador del proyecto GeeX) fue contundente: <em>«Si desaparecieran mañana de las empresas polacas, la economía se detendría. Poseen el conocimiento organizativo, entienden el porqué de cada decisión pasada y pueden predecir las consecuencias de cada cambio. Su salida debe posponerse el mayor tiempo posible.»</em> La profesora Agnieszka Chłoń-Domińczak (Rector de Investigación, Warsaw School of Economics) añadió: las soluciones diseñadas para generaciones más jóvenes frecuentemente no encajan con las experiencias, motivaciones y estilos de trabajo de Gen X.</p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 02 · B&Q ══════════════════════════════════════════════════════════════ -->
+<section class="section up" id="bq">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">El modelo más maduro del sector — 33 años de evidencia</div>
+      <h2 class="sec-title">B&amp;Q — Lo que hace actualmente y el origen del modelo</h2>
+    </div>
+  </div>
+
+  <p>B&Q (Kingfisher Group, UK) es el caso más documentado y riguroso del sector retail europeo. No es una iniciativa puntual: es una cultura organizativa construida durante más de tres décadas, respaldada por un estudio de la Universidad de Warwick con resultados que todavía se citan como referencia en la política laboral británica.</p>
+
+  <div class="sub-h">El experimento de Macclesfield (1991) — Los datos que lo cambiaron todo</div>
+  <p>En 1991, B&Q contrató a la Universidad de Warwick para comparar su tienda de Macclesfield —con plantilla mayoritariamente mayor de 50— contra cuatro tiendas estándar del mismo grupo. Los resultados fueron tan contundentes que se convirtieron en política de empresa permanente:</p>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Indicador medido</th><th>Tienda 50+ Macclesfield</th><th>Referencia grupo</th></tr></thead>
+      <tbody>
+        <tr><td>Rentabilidad / Beneficios</td><td><span class="tg tg-g">+18% más altos</span></td><td>Benchmark B&amp;Q</td></tr>
+        <tr><td>Rotación de personal</td><td><span class="tg tg-g">6 veces más baja</span></td><td>Benchmark B&amp;Q</td></tr>
+        <tr><td>Absentismo</td><td><span class="tg tg-g">−39%</span></td><td>Benchmark B&amp;Q</td></tr>
+        <tr><td>Merma / Shrinkage</td><td><span class="tg tg-g">−58%</span></td><td>Benchmark B&amp;Q</td></tr>
+        <tr><td>Satisfacción de clientes</td><td><span class="tg tg-g">Mejora significativa</span></td><td>Encuestas a clientes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h">Qué hace B&Q actualmente (2024–2025) en sus 300 tiendas</div>
+
+  <div class="hbox">
+    <div class="hbox-head plum">📌 Políticas activas — vigentes hoy</div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>Sin edad de jubilación obligatoria desde hace +15 años.</strong> Cualquier empleado puede continuar trabajando indefinidamente si quiere y puede hacerlo. El empleado de mayor edad registrado en activo tenía 96 años trabajando en caja.</span></div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>35% de la plantilla tiene más de 50 años</strong> — objetivo activo y medido, no resultado accidental. Comunicado públicamente como compromiso de empresa.</span></div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>Objetivo de reflejo demográfico local:</strong> cada una de las 300 tiendas tiene como meta que su plantilla refleje la composición de la comunidad local, con énfasis explícito en contratar a mayores de 50.</span></div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>Flexible working y job-sharing</strong> específicamente diseñado para trabajadores de mayor edad, incluyendo semijubilados que quieren reducir progresivamente.</span></div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>Materiales de reclutamiento con plantillas diversas</strong> — los mayores son visibles en toda la comunicación de employer branding, no solo como excepciones.</span></div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>Mentoring formal:</strong> los empleados senior son invitados activamente a transferir conocimiento técnico de bricolaje y atención al cliente a empleados jóvenes.</span></div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>Transición gradual formalizada:</strong> personas mayores de 60 años pueden optar a reducir jornada o cambiar a un rol de «asesor experto» con menor componente físico — sin perder beneficios proporcionalmente.</span></div>
+    <div class="hbox-row"><span class="harr p">→</span><span><strong>Miembro fundador del Employers' Forum on Age</strong> y asesor activo del Gobierno británico en política de empleo 50+ en el sector privado.</span></div>
+  </div>
+
+  <div class="bquote">
+    La razón original por la que B&Q contrató a mayores de 50 fue pragmática: sus clientes de bricolaje (perfil 40–65 años) pedían ser atendidos por alguien que viviera en una casa propia y supiera del tema. Además, la altísima rotación de empleados de 17–21 años tenía un coste insostenible. El experimento demostró que los mayores son más estables, más afines al cliente y más rentables.
+    <span class="bquote-attr">— Society of Occupational Medicine UK, «B&Q and Ageing Workers»</span>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 03 · LIDL 55/REDEFINED ════════════════════════════════════════════════ -->
+<section class="section up" id="lidl">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">Primer grocery retailer acreditado — noviembre 2024</div>
+      <h2 class="sec-title">Lidl GB y la acreditación 55/Redefined</h2>
+    </div>
+  </div>
+
+  <p>En noviembre de 2024, Lidl GB se convirtió en el primer retailer de alimentación en obtener la acreditación 55/Redefined como empleador inclusivo para trabajadores mayores de 50 años. Este hito es especialmente relevante porque Lidl Polska —operada por el mismo grupo Schwarz— no tiene todavía ningún programa equivalente documentado públicamente.</p>
+
+  <div class="sub-h">Los 4 compromisos concretos asumidos por Lidl GB</div>
+
+  <div class="trends">
+    <div class="trend">
+      <div class="trend-h p"><div class="trend-n">1</div><div class="trend-meta"><div class="trend-label">Selección</div><div class="trend-name">Procesos inclusivos y accesibles para 50+</div></div></div>
+      <div class="trend-body">Auditoría y rediseño de los procesos de selección para garantizar que no excluyen —ni explícita ni algorítmicamente— a candidatos mayores de 50 años. Incluye revisión del lenguaje de las ofertas y de los filtros del ATS.</div>
+    </div>
+    <div class="trend">
+      <div class="trend-h b"><div class="trend-n">2</div><div class="trend-meta"><div class="trend-label">Comunicación</div><div class="trend-name">Difusión equitativa de vacantes</div></div></div>
+      <div class="trend-body">Comprometerse a publicar y promover las vacantes a través de canales que alcancen activamente al segmento 50+, no solo en plataformas dominadas por candidatos jóvenes.</div>
+    </div>
+    <div class="trend">
+      <div class="trend-h o"><div class="trend-n">3</div><div class="trend-meta"><div class="trend-label">Políticas RR.HH.</div><div class="trend-name">Revisión de políticas de jubilación</div></div></div>
+      <div class="trend-body">Revisar todas las políticas de RR.HH. relacionadas con la jubilación para eliminar incentivos implícitos a la salida temprana y diseñar opciones de transición gradual.</div>
+    </div>
+    <div class="trend">
+      <div class="trend-h t"><div class="trend-n">4</div><div class="trend-meta"><div class="trend-label">Formación</div><div class="trend-name">Inversión en formación técnica 50+</div></div></div>
+      <div class="trend-body">Destinar presupuesto específico de L&D al grupo de mayor edad, incluyendo upskilling tecnológico y reskilling para nuevos roles dentro de la organización.</div>
+    </div>
+  </div>
+
+  <div class="bquote">
+    Estamos orgullosos de ser el primer retailer de alimentación en asociarnos con 55/Redefined. Valoramos el desarrollo del talento a cualquier edad y nuestra acreditación demuestra nuestro compromiso con una cultura inclusiva basada en el respeto y la equidad para todas las generaciones.
+    <span class="bquote-attr">— Kathryn Rothnie, Directora de Ciclo de Vida del Empleado, Lidl GB (noviembre 2024)</span>
+  </div>
+
+  <div class="sub-h">El ecosistema 55/Redefined — Lo que implica la certificación</div>
+  <p>55/Redefined no es solo un sello: es un ecosistema completo. Tras adquirir en 2025 el Certified Age Friendly Employer Program del Age Friendly Institute, se ha convertido en el estándar global de referencia con más de 200 empleadores certificados en 31 países.</p>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Plataforma</th><th>Qué ofrece</th><th>Cómo la usa un retailer</th></tr></thead>
+      <tbody>
+        <tr><td>Work/Redefined</td><td>Herramientas de benchmark, acreditación y consultoría de age diversity</td><td>Hoja de ruta estructurada para obtener y mantener la certificación</td></tr>
+        <tr><td>Jobs/Redefined</td><td>Portal de empleo específico para mayores de 50 años</td><td>Canal directo de atracción de candidatos 50+ que buscan trabajo activamente</td></tr>
+        <tr><td>Me/Redefined</td><td>Plataforma de coaching de transición de carrera y midlife</td><td>Retención y reengagement de empleados senior actuales</td></tr>
+        <tr><td>Life/Redefined</td><td>Comunidad de historias inspiradoras para 50+</td><td>Reputación de empleador inclusivo ante la comunidad senior</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout cobalt">
+    <div class="callout-icon">🏅</div>
+    <div>
+      <div class="callout-title">Otros retailers ya certificados 55/Redefined (2024–2025)</div>
+      <p class="callout-body">Boots (farmacia/retail salud), Next (moda retail), junto a AXA, CapGemini, HSBC y Bank of Ireland. En el sector retail, Boots y Next son actualmente las referencias junto a Lidl GB. La lista crece mensualmente — ser de los primeros en un mercado concreto (como Polonia) supone ventaja de pionero en employer branding.</p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 04 · OTROS RETAILERS ══════════════════════════════════════════════════ -->
+<section class="section up" id="otros">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">Benchmarking sectorial activo</div>
+      <h2 class="sec-title">Qué están haciendo ahora mismo Boots, Next, IKEA, Decathlon y Auchan</h2>
+    </div>
+  </div>
+
+  <div class="cc-grid">
+
+    <div class="cc">
+      <div class="cc-head teal">
+        <span class="cc-pill">55/Redefined Certified</span>
+        <div class="cc-name">Boots</div>
+        <div class="cc-sub">Farmacia / Retail salud · UK · Plantilla mayoritariamente femenina 40–55</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-kv-row">
+          <div><div class="cc-k">Acción concreta 1</div><div class="cc-v">+10% contratación 50+</div></div>
+          <div><div class="cc-k">Compromiso</div><div class="cc-v">Público y medido</div></div>
+          <div><div class="cc-k">Certificación</div><div class="cc-v">55/Redefined</div></div>
+          <div><div class="cc-k">Diferenciador</div><div class="cc-v">Empleador «menopausia-friendly»</div></div>
+        </div>
+        <div class="cc-quote teal">Ha aumentado explícitamente la contratación de mayores de 50 en un 10% y se ha posicionado como empleador favorable a la menopausia — especialmente relevante dado que su plantilla es mayoritariamente femenina de 40–55 años. Citada por People Management UK (enero 2025) como uno de los cuatro retailers ejemplares en contratación senior.</div>
+        <div class="cc-tags"><span class="ctg t">55/Redefined</span><span class="ctg t">Menopausia-friendly</span><span class="ctg g">+10% 50+ hiring</span></div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head cobalt">
+        <span class="cc-pill">People Mgmt Benchmark UK 2025</span>
+        <div class="cc-name">Next</div>
+        <div class="cc-sub">Moda retail · UK · Referencia en programas «returnee»</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-kv-row">
+          <div><div class="cc-k">Programa activo 1</div><div class="cc-v">Mentoring formal 50+</div></div>
+          <div><div class="cc-k">Programa activo 2</div><div class="cc-v">Returner incentives</div></div>
+          <div><div class="cc-k">Política</div><div class="cc-v">Flexible working real</div></div>
+          <div><div class="cc-k">Beneficio senior</div><div class="cc-v">Plan de pensiones activo</div></div>
+        </div>
+        <div class="cc-quote cobalt">Opera programas de mentoring formal para career changers de mayor edad, incentivos económicos para «returnees» de 50+ que regresan tras una pausa laboral, y trabajo flexible como política real —no solo declarativa. Su plan de pensiones competitivo se comunica activamente como parte de la EVP para perfiles senior.</div>
+        <div class="cc-tags"><span class="ctg b">Mentoring formal</span><span class="ctg b">Returner program</span><span class="ctg b">Flexible real</span></div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head orange">
+        <span class="cc-pill">Reskilling +$1.4B ventas</span>
+        <div class="cc-name">IKEA</div>
+        <div class="cc-sub">Retail hogar · Global · Caso de reskilling multigeneracional documentado</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-kv-row">
+          <div><div class="cc-k">Empleados reconvertidos</div><div class="cc-v">8.500 → consultores diseño</div></div>
+          <div><div class="cc-k">Impacto en ventas</div><div class="cc-v">+$1.400M generados</div></div>
+          <div><div class="cc-k">Cultura</div><div class="cc-v">«Co-workers» — sin jerarquía</div></div>
+          <div><div class="cc-k">DEI</div><div class="cc-v">Friendly Workplace + Universum</div></div>
+        </div>
+        <div class="cc-quote orange">IKEA reconvirtió 8.500 empleados —en lugar de prescindir de ellos por la automatización de cajas y almacén— a roles de consultor de diseño de interiores. La iniciativa beneficia desproporcionadamente a empleados senior: quienes llevan más años tienen más conocimiento de producto y de cliente para capitalizar. Resultado documentado: +1.400 millones de dólares en ventas generados por los empleados reconvertidos.</div>
+        <div class="cc-tags"><span class="ctg o">Reskilling masivo</span><span class="ctg o">ROI demostrado</span><span class="ctg o">Anti-automatización</span></div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head dark">
+        <span class="cc-pill">91% empleados felices — Glassdoor 4,4</span>
+        <div class="cc-name">Decathlon</div>
+        <div class="cc-sub">Retail deporte · Global · DEI 2024 formalizado pero sin programa explícito 50+</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-kv-row">
+          <div><div class="cc-k">Estrategia DEI 2024</div><div class="cc-v">4 pilares formalizados</div></div>
+          <div><div class="cc-k">Certificación</div><div class="cc-v">EDGE Empower® (género)</div></div>
+          <div><div class="cc-k">Engagement general</div><div class="cc-v">91% felices de ir a trabajar</div></div>
+          <div><div class="cc-k">Programa 50+ explícito</div><div class="cc-v">No documentado públicamente</div></div>
+        </div>
+        <div class="cc-quote dark">En 2024 Decathlon formalizó su estrategia DEI en cuatro pilares: reflejar la diversidad de la sociedad, crear sentido de pertenencia, impulsar el rendimiento y asegurar cumplimiento regulatorio. La edad no aparece como dimensión prioritaria explícita en sus comunicaciones. Sin embargo, su modelo «contratar por pasión, no por perfil» tiene un efecto naturalmente inclusivo para perfiles senior con décadas de práctica deportiva.</div>
+        <div class="cc-tags"><span class="ctg p">EDGE Empower®</span><span class="ctg p">DEI formalizado</span><span class="ctg o">Sin programa 50+ explícito</span></div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head red">
+        <span class="cc-pill">EBEA 2024 — Sin programa senior formal</span>
+        <div class="cc-name">Biedronka</div>
+        <div class="cc-sub">Alimentación · Polonia · Mayor empleador privado del país</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-kv-row">
+          <div><div class="cc-k">EVP senior implícita</div><div class="cc-v">Estabilidad + salario</div></div>
+          <div><div class="cc-k">Protección legal</div><div class="cc-v">Labor Code 4 años pre-jubil.</div></div>
+          <div><div class="cc-k">Iniciativa senior</div><div class="cc-v">Fundación Biedronka</div></div>
+          <div><div class="cc-k">Programa formal 50+</div><div class="cc-v">No documentado</div></div>
+        </div>
+        <div class="cc-quote red">Biedronka no tiene una estrategia de talento senior formalmente comunicada, pero su EVP de estabilidad, transparencia salarial y escala es inherentemente atractiva para el perfil 50+. La subida salarial del 10,5% en enero 2025 es especialmente relevante para este grupo — el 31% de Gen X cree que no cobra justamente. La Fundación Biedronka orientada a mayores muestra sensibilidad hacia este colectivo pero no se ha trasladado a programas de RR.HH.</div>
+        <div class="cc-tags"><span class="ctg o">Sin programa formal</span><span class="ctg o">EVP favorable implícita</span><span class="ctg p">Protección Código Laboral</span></div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head plum">
+        <span class="cc-pill">FAKRO — Referencia nacional polaca</span>
+        <div class="cc-name">FAKRO</div>
+        <div class="cc-sub">Fabricación / Retail B2B · Polonia · Modelo de transición gradual documentado</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-kv-row">
+          <div><div class="cc-k">% Gen X en plantilla</div><div class="cc-v">~50% del total</div></div>
+          <div><div class="cc-k">Modelo activo</div><div class="cc-v">Director → Consultor parcial</div></div>
+          <div><div class="cc-k">Resultado</div><div class="cc-v">Retención del conocimiento</div></div>
+          <div><div class="cc-k">Transferencia</div><div class="cc-v">Onboarding liderado por seniors</div></div>
+        </div>
+        <div class="cc-quote plum">«Cuando alguien se acerca a la jubilación, no le empujamos a la salida. Nos sentamos, hablamos y planificamos. A menudo el director entrega su puesto a un sucesor pero permanece a tiempo parcial liderando proyectos y apoyando a colegas jóvenes. Esto no es un paso atrás — es la mejor manera de preservar el conocimiento.» Los empleados jóvenes paran a los seniors en los pasillos para preguntarles sobre nuances y contexto histórico. Gen X es el corazón de su onboarding.</div>
+        <div class="cc-tags"><span class="ctg p">Transición gradual real</span><span class="ctg p">Mentoring informal</span><span class="ctg p">Benchmark polaco</span></div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 05 · SCHNEIDER / OCDE ═════════════════════════════════════════════════ -->
+<section class="section up" id="schneider">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">El programa más sofisticado avalado por la OCDE — 2023/2025</div>
+      <h2 class="sec-title">Schneider Electric — El benchmark de referencia cross-sector</h2>
+    </div>
+  </div>
+
+  <p>Aunque Schneider Electric no es un retailer, su Senior Talent Program (2023–2025) es el caso más riguroso y documentado a nivel mundial de gestión estructurada del talento senior, avalado por la OCDE en su informe «Career Paths and Engagement of Mature Workers» (2024). Es el referente que las empresas retail más avanzadas están empezando a seguir.</p>
+
+  <div class="sub-h">Por qué se creó el programa — el diagnóstico previo</div>
+
+  <div class="split2">
+    <div class="scard">
+      <div class="scard-head plum">🔍 Lo que Schneider encontró</div>
+      <div class="scard-body">
+        <div class="scard-row"><b>→</b> El 20–25% de su plantilla global se jubilará en la próxima década</div>
+        <div class="scard-row"><b>→</b> Los trabajadores de más de 50 años mostraban los niveles de engagement más <strong>bajos</strong> de toda la empresa</div>
+        <div class="scard-row"><b>→</b> La crisis demográfica haría insostenible no retener el conocimiento acumulado de este grupo</div>
+        <div class="scard-row"><b>→</b> Las políticas genéricas de RR.HH. no diferenciaban por edad ni necesidades vitales</div>
+      </div>
+    </div>
+    <div class="scard">
+      <div class="scard-head cobalt">⚡ Los hallazgos clave del análisis</div>
+      <div class="scard-body">
+        <div class="scard-row"><b>→</b> Los trabajadores senior NO son homogéneos: algunos quieren más responsabilidad, otros quieren menos</div>
+        <div class="scard-row"><b>→</b> Muchos quieren ser reconocidos como fuentes de conocimiento, no gestionados como «pre-jubilados»</div>
+        <div class="scard-row"><b>→</b> El problema no es la intención — es la falta de diferenciación en las políticas</div>
+        <div class="scard-row"><b>→</b> Tratar a todos los 50+ igual es tan problemático como ignorarlos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-h">Qué hace el programa exactamente</div>
+  <div class="hbox">
+    <div class="hbox-head cobalt">🛠 Elementos activos del Senior Talent Program</div>
+    <div class="hbox-row"><span class="harr b">→</span><span><strong>Perfiles diferenciados por aspiración:</strong> desarrolla tipos distintos de trabajadores senior según sus motivaciones reales — los que quieren acelerar carrera, los que quieren reducir presión, los que quieren dejar legado. Cada perfil tiene una conversación y hoja de ruta distintas.</span></div>
+    <div class="hbox-row"><span class="harr b">→</span><span><strong>Formación personalizada mid-career y senior:</strong> tanto upskilling (mejorar habilidades actuales) como reskilling completo para asumir nuevas responsabilidades. No los módulos genéricos de L&D — formación diseñada para el punto vital concreto de un trabajador de 50–60 años.</span></div>
+    <div class="hbox-row"><span class="harr b">→</span><span><strong>Work-in-progress y rotación de roles:</strong> específicamente diseñados para facilitar la transición de empleados 50+ a nuevas responsabilidades internas sin que suponga una «degradación».</span></div>
+    <div class="hbox-row"><span class="harr b">→</span><span><strong>Opciones de trabajo flexible:</strong> trabajo remoto, esquemas de jubilación gradual y licencias de cuidadores pagadas. Las últimas son especialmente relevantes para Gen X, que a menudo gestiona la dependencia de sus padres mayores mientras trabaja.</span></div>
+    <div class="hbox-row"><span class="harr b">→</span><span><strong>Comunicación cultural adaptada:</strong> el lenguaje sobre envejecimiento y carrera senior varía culturalmente. El programa adapta los mensajes por país para hablar del tema sin generar rechazo.</span></div>
+    <div class="hbox-row"><span class="harr b">→</span><span><strong>KPIs y seguimiento:</strong> evaluaciones regulares del aumento del engagement de empleados senior como indicador principal de éxito. Desplegado en 4 oleadas globales desde 2023.</span></div>
+  </div>
+
+  <div class="callout cobalt">
+    <div class="callout-icon">📊</div>
+    <div>
+      <div class="callout-title">Conclusión de la OCDE sobre el programa (2024)</div>
+      <p class="callout-body">Los programas que funcionan son los que personalizan la oferta según el perfil y motivación del trabajador senior, miden regularmente el engagement por segmento de edad (no solo globalmente), y tienen el apoyo visible de la alta dirección. Los que fallan son los que tratan a todos los 50+ como un grupo homogéneo con las mismas necesidades.</p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 06 · DATOS DUROS ══════════════════════════════════════════════════════ -->
+<section class="section up" id="datos-duros">
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">Investigación reciente con metodología documentada</div>
+      <h2 class="sec-title">Los datos que definen la situación actual del talento 50+</h2>
+    </div>
+  </div>
+
+  <div class="sub-h">AARP–LinkedIn: «The Untapped Value of Older Workers» — diciembre 2025</div>
+  <p>Basado en datos reales de millones de perfiles de LinkedIn, este es el estudio más reciente y metodológicamente sólido sobre el valor cuantificable de los trabajadores 50+. Desmonta sistemáticamente los mitos sobre este segmento:</p>
+
+  <div class="bars">
+    <div class="bar-row">
+      <div class="bar-n">1</div>
+      <div class="bar-info">
+        <div class="bar-label">Retención al año en trabajadores 50+ (vs 70,6% en menores de 50)</div>
+        <div class="bar-track"><div class="bar-fill p" style="width:85.4%"></div></div>
+      </div>
+      <div class="bar-pct">85,4%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-n">2</div>
+      <div class="bar-info">
+        <div class="bar-label">Integración de IA en trabajo diario — trabajadores 50+ que ya la usan (similar a jóvenes)</div>
+        <div class="bar-track"><div class="bar-fill b" style="width:73%;animation-delay:.07s"></div></div>
+      </div>
+      <div class="bar-pct">73%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-n">3</div>
+      <div class="bar-info">
+        <div class="bar-label">Mayor red profesional promedio (+20,4% más grande y sénior que la de jóvenes)</div>
+        <div class="bar-track"><div class="bar-fill t" style="width:20.4%;animation-delay:.14s"></div></div>
+      </div>
+      <div class="bar-pct">+20,4%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-n">4</div>
+      <div class="bar-info">
+        <div class="bar-label">Años de experiencia laboral adicional frente a trabajadores menores</div>
+        <div class="bar-track"><div class="bar-fill o" style="width:75%;animation-delay:.21s"></div></div>
+      </div>
+      <div class="bar-pct">+15 años</div>
+    </div>
+  </div>
+
+  <div class="sub-h">iHire Multigenerational Workforce Report 2025 — encuesta +5.000 trabajadores</div>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Dato</th><th>Gen X (44–60)</th><th>Comparativa</th><th>Implicación</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Cree que no cobra justamente</td>
+          <td><span class="tg tg-r">31,3%</span></td>
+          <td>El porcentaje más alto de cualquier generación</td>
+          <td>Equidad salarial es la palanca de retención #1, no la edad</td>
+        </tr>
+        <tr>
+          <td>Lee reviews de empleados antes de aplicar</td>
+          <td><span class="tg tg-p">44,8%</span></td>
+          <td>También el más alto de todas las generaciones</td>
+          <td>GoWork.pl y Glassdoor son críticos para captarlos</td>
+        </tr>
+        <tr>
+          <td>Beneficio más valorado: seguro médico privado completo</td>
+          <td><span class="tg tg-g">64,8%</span></td>
+          <td>Gen Z prioriza flexibilidad horaria</td>
+          <td>La comunicación del paquete de beneficios debe segmentarse</td>
+        </tr>
+        <tr>
+          <td>Cree que empleadores tienen percepciones falsas sobre su generación</td>
+          <td><span class="tg tg-o">+40%</span></td>
+          <td>El sesgo percibido es alto</td>
+          <td>Muchos no aplican aunque quieran porque asumen rechazo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h">55/Redefined: «Shut Out, Forced Out, Overlooked» — datos actuales UK</div>
+  <div class="hbox">
+    <div class="hbox-head teal">📋 Hallazgos del informe — Directamente aplicables al contexto europeo</div>
+    <div class="hbox-row"><span class="harr t">→</span><span>El <strong>93%</strong> de los mayores de 50 se siente <em>sin apoyo</em> por su empleador en su desarrollo profesional</span></div>
+    <div class="hbox-row"><span class="harr t">→</span><span>El <strong>89%</strong> estaría dispuesto a aceptar una rebaja salarial para cambiar de rol o sector y reciclarse — pero nadie se lo ofrece</span></div>
+    <div class="hbox-row"><span class="harr t">→</span><span>El <strong>92%</strong> seguiría trabajando más tiempo si pudiera reorientar su carrera o cambiar de función dentro de la misma empresa</span></div>
+    <div class="hbox-row"><span class="harr t">→</span><span>El <strong>9 de cada 10</strong> estaría dispuesto a reentrenarse incluso a un salario inferior — el bloqueo no es económico ni actitudinal, es de oferta</span></div>
+    <div class="hbox-row"><span class="harr t">→</span><span>El <strong>46%</strong> de los 55+ quiere trabajar más allá de los 66 años — no quieren jubilarse, quieren que sus empleadores los diseñen para que puedan quedarse</span></div>
+  </div>
+
+  <div class="callout orange">
+    <div class="callout-icon">⚡</div>
+    <div>
+      <div class="callout-title">El dato más contraintuitivo para los responsables de RR.HH.</div>
+      <p class="callout-body">Los mayores de 50 no son el colectivo más caro ni el que más problemas genera. Son los que más se quedan (85% retención vs 71%), los que menos cuestan en rotación, los que tienen redes profesionales más grandes para facilitar contrataciones, y los que están más dispuestos a reciclarse. El problema no es que no quieran trabajar o formarse. <strong>El problema es que sus empleadores no les diseñan condiciones para ellos.</strong></p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 07 · COMPARATIVA ══════════════════════════════════════════════════════ -->
+<section class="section up" id="comparativa">
+  <div class="sec-head">
+    <div class="sec-num">07</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">Estado actual documentado empresa por empresa</div>
+      <h2 class="sec-title">Comparativa de madurez real en gestión del talento 50+</h2>
+    </div>
+  </div>
+
+  <p>La escala de madurez va de <strong>Líder sectorial</strong> (programa específico con métricas, certificación externa, comunicación activa y resultados demostrados) a <strong>Declarativo</strong> (política en web sin programa estructurado). Toda la información proviene de fuentes documentadas públicamente.</p>
+
+  <div class="tbl">
+    <table>
+      <thead>
+        <tr>
+          <th>Empresa</th>
+          <th>Programa formal 50+</th>
+          <th>Acreditación externa</th>
+          <th>Evidencia de resultados</th>
+          <th>Nivel de madurez</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>B&amp;Q</td>
+          <td>✓ Política desde 1991 — vigente y activa</td>
+          <td>EFA fundador; referente Gov. UK</td>
+          <td>+18% beneficios, −6x rotación, −39% absentismo (U. Warwick)</td>
+          <td><span class="tg tg-g">LÍDER SECTORIAL</span></td>
+        </tr>
+        <tr>
+          <td>Lidl GB</td>
+          <td>✓ 4 compromisos concretos, nov 2024</td>
+          <td>55/Redefined Age-Inclusive</td>
+          <td>Primer grocery retailer acreditado</td>
+          <td><span class="tg tg-g">MUY AVANZADO</span></td>
+        </tr>
+        <tr>
+          <td>Boots</td>
+          <td>✓ +10% contratación 50+ — compromiso público</td>
+          <td>55/Redefined Certified</td>
+          <td>Citada benchmark UK (People Mgt, ene 2025)</td>
+          <td><span class="tg tg-g">AVANZADO</span></td>
+        </tr>
+        <tr>
+          <td>Next</td>
+          <td>✓ Mentoring, returner incentives, flexible work</td>
+          <td>No documentada públicamente</td>
+          <td>Citada como benchmark UK</td>
+          <td><span class="tg tg-g">AVANZADO</span></td>
+        </tr>
+        <tr>
+          <td>IKEA</td>
+          <td>✓ Reskilling 8.500 empleados (incl. seniors)</td>
+          <td>Friendly Workplace; Universum</td>
+          <td>+$1.400M ventas por empleados reconvertidos</td>
+          <td><span class="tg tg-b">INTERMEDIO-ALTO</span></td>
+        </tr>
+        <tr>
+          <td>Decathlon</td>
+          <td>✗ Sin programa formal 50+ documentado</td>
+          <td>EDGE Empower® 2024 (género)</td>
+          <td>91% empleados felices (todas las edades)</td>
+          <td><span class="tg tg-b">INTERMEDIO</span></td>
+        </tr>
+        <tr>
+          <td>Biedronka</td>
+          <td>✗ Sin programa formal documentado</td>
+          <td>EBEA 2024 (EB general)</td>
+          <td>Sin datos públicos por segmento de edad</td>
+          <td><span class="tg tg-o">INCIPIENTE</span></td>
+        </tr>
+        <tr>
+          <td>Lidl Polska</td>
+          <td>✗ Sin equivalente al programa GB</td>
+          <td>Top Employer 2024 (general)</td>
+          <td>Sin datos públicos por segmento de edad</td>
+          <td><span class="tg tg-o">INCIPIENTE</span></td>
+        </tr>
+        <tr>
+          <td>Auchan Group</td>
+          <td>Declaración en web corporativa</td>
+          <td>Top Employer Romania 2024</td>
+          <td>Sin programas específicos documentados para 50+</td>
+          <td><span class="tg tg-r">DECLARATIVO</span></td>
+        </tr>
+        <tr>
+          <td>Kaufland</td>
+          <td>✗ Sin programa documentado</td>
+          <td>Top Employer 2024 (general)</td>
+          <td>Sin datos públicos por segmento de edad</td>
+          <td><span class="tg tg-r">BÁSICO</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout green">
+    <div class="callout-icon">🎯</div>
+    <div>
+      <div class="callout-title">La ventana de pionero en Polonia todavía está abierta</div>
+      <p class="callout-body">En el mercado polaco de retail, ninguna empresa tiene actualmente un programa formal y certificado de gestión de talento 50+. Lidl Polska, Biedronka, Kaufland, Carrefour y Auchan Polska están todos en nivel incipiente o básico. Quien actúe primero —certificación 55/Redefined equivalente, programa medible, comunicación activa— conseguirá la misma ventaja de pionero que consiguió Lidl GB en UK en noviembre de 2024.</p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 08 · GEN Z vs GEN X ════════════════════════════════════════════════ -->
+<section class="section up" id="genz-vs-genx">
+  <div class="sec-head">
+    <div class="sec-num">08</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">La brecha real de trato en el sector</div>
+      <h2 class="sec-title">Gen Z vs Gen X — Cómo los trata el sector retail actualmente</h2>
+    </div>
+  </div>
+
+  <p>La mayor parte del presupuesto y atención en employer branding del sector retail se concentra en atraer a Gen Z. Esto crea un desequilibrio estructural con consecuencias directas en la retención y el engagement de Gen X. No es una opinión — es documentable sector por sector.</p>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Dimensión</th><th>Gen Z — Lo que hacen los retailers hoy</th><th>Gen X — Lo que hacen (o no hacen)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Canal de reclutamiento</td>
+          <td>TikTok (46% encontró trabajo vía TikTok en 2025), Instagram, OLX Praca mobile</td>
+          <td>Pracuj.pl, LinkedIn, GoWork.pl, referidos, anuncios físicos. Sin estrategia específica en la mayoría de empresas</td>
+        </tr>
+        <tr>
+          <td>Contenido de EB activo</td>
+          <td>Day-in-the-life TikToks, Reels detrás de cámaras, challenges, memes de equipo</td>
+          <td>Casi inexistente como segmento. Los pocos contenidos son implícitos o accidentales</td>
+        </tr>
+        <tr>
+          <td>Presupuesto de EB asignado</td>
+          <td>La gran mayoría del presupuesto total de EB en todo el sector</td>
+          <td>Residual o inexistente en la mayoría de empresas — incluyendo todas las del mercado polaco</td>
+        </tr>
+        <tr>
+          <td>Imagen en materiales de EB</td>
+          <td>Protagonistas absolutos: 90% de las fotos y vídeos son de personas de 18–30 años</td>
+          <td>Prácticamente invisibles salvo B&amp;Q (activamente) e IKEA (implícitamente)</td>
+        </tr>
+        <tr>
+          <td>Tiempo de respuesta esperado</td>
+          <td>24h máximo — si no responden, abandonan el proceso</td>
+          <td>Toleran más tiempo, pero valoran entrevista personal directa con el mánager contratante</td>
+        </tr>
+        <tr>
+          <td>Propuesta de valor comunicada</td>
+          <td>Propósito, ESG, cultura «cool», TikTok de empleados felices, horario flexible</td>
+          <td>Estabilidad, salario transparente, reconocimiento de experiencia — cuando se comunica</td>
+        </tr>
+        <tr>
+          <td>Beneficio más buscado</td>
+          <td>Trabajo remoto / híbrido — condición no negociable para muchos</td>
+          <td>Seguro médico familiar completo (64,8% lo valoran por encima del salario puro)</td>
+        </tr>
+        <tr>
+          <td>Canal de búsqueda de trabajo</td>
+          <td>TikTok, Instagram, OLX Praca, apps de empleo con UX mobile-first</td>
+          <td>LinkedIn, GoWork.pl, Pracuj.pl con filtros por experiencia. Red de contactos profesional</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout plum">
+    <div class="callout-icon">🔑</div>
+    <div>
+      <div class="callout-title">El error más costoso — One size fits all en employer branding</div>
+      <p class="callout-body">El error más documentado no es ignorar a Gen X intencionalmente — es diseñar todo el employer branding para Gen Z y asumir que el mensaje también llega a los demás. No llega. Un candidato de 52 años que abre la página de careers y ve solo fotos de empleados de 24 años bailando en TikTok sencillamente no aplica. La solución no es hacer dos estrategias paralelas con el doble de presupuesto — es asegurarse de que los mensajes, imágenes y canales principales no excluyan activamente a un segmento que representa el 30% de la fuerza laboral disponible.</p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ 09 · POSICIÓN AUCHAN ═══════════════════════════════════════════════════ -->
+<section class="section up" id="auchan">
+  <div class="sec-head">
+    <div class="sec-num">09</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">Dónde está el grupo ahora mismo</div>
+      <h2 class="sec-title">Posición actual de Auchan Group y Auchan Polska</h2>
+    </div>
+  </div>
+
+  <p>Auchan Group tiene actualmente una posición <strong>declarativa</strong> en la gestión del talento senior. La web corporativa de Auchan Retail España menciona explícitamente el compromiso de «mejorar el potencial de empleo de los ciudadanos senior» — pero no existe documentación pública de programas concretos, certificaciones específicas o resultados medidos en ninguna de sus operaciones europeas para el segmento 50+.</p>
+
+  <div class="sub-h">Evidencia documentada del Grupo Auchan (2024)</div>
+
+  <div class="hbox">
+    <div class="hbox-head orange">📄 Lo que existe actualmente — Auchan Group</div>
+    <div class="hbox-row"><span class="harr o">✓</span><span><strong>Auchan Retail España — Declaración web:</strong> «Auchan Retail se compromete a promover la diversidad, tratar a hombres y mujeres equitativamente, facilitar la inclusión de personas con discapacidad, y mejorar el potencial de empleo de los ciudadanos senior.»</span></div>
+    <div class="hbox-row"><span class="harr o">✓</span><span><strong>Auchan Romania — Top Employer 2024:</strong> certificación obtenida con puntuaciones especialmente altas en valores y misión, entorno de trabajo y employer branding. Demuestra capacidad organizativa para formalizar prácticas de RR.HH. a nivel avanzado.</span></div>
+    <div class="hbox-row"><span class="harr o">✗</span><span><strong>Auchan Polska — Sin programas específicos</strong> documentados públicamente para gestión del talento 50+. Sin certificación de inclusividad de edad. Sin datos de plantilla por segmento de edad publicados.</span></div>
+    <div class="hbox-row"><span class="harr o">✗</span><span><strong>Auchan Polska — Sin diferenciación visible</strong> en la estrategia de employer branding para el perfil senior respecto a cualquier otro segmento de empleados.</span></div>
+  </div>
+
+  <div class="sub-h">El gap respecto a la competencia directa en Polonia</div>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Empresa en Polonia</th><th>Programa 50+</th><th>Certificación edad</th><th>Posición competitiva</th></tr></thead>
+      <tbody>
+        <tr><td>Biedronka</td><td><span class="tg tg-o">Sin programa formal</span></td><td>Sin certificación específica</td><td>Incipiente — EVP favorable implícita</td></tr>
+        <tr><td>Lidl Polska</td><td><span class="tg tg-o">Sin equivalente al programa GB</span></td><td>Top Employer (general)</td><td>Incipiente — brecha vs Lidl GB enorme</td></tr>
+        <tr><td>Kaufland</td><td><span class="tg tg-r">No documentado</span></td><td>Top Employer (general)</td><td>Básico</td></tr>
+        <tr><td>IKEA Polska</td><td><span class="tg tg-b">Reskilling implícito</span></td><td>Friendly Workplace</td><td>Intermedio — beneficio indirecto</td></tr>
+        <tr><td>Decathlon Polska</td><td><span class="tg tg-o">Sin programa explícito</span></td><td>EDGE (género)</td><td>Intermedio — cultura favorable</td></tr>
+        <tr><td><strong>Auchan Polska</strong></td><td><span class="tg tg-r">Declaración genérica</span></td><td>Top Employer Romania (no PL)</td><td><strong>Declarativo</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout teal">
+    <div class="callout-icon">🌍</div>
+    <div>
+      <div class="callout-title">El contexto del Grupo Auchan — Capacidad demostrada, aplicación pendiente</div>
+      <p class="callout-body">Auchan Romania demuestra que el grupo tiene la capacidad organizativa para certificarse como empleador de referencia (Top Employer 2024 con altas puntuaciones en prácticas de personas). Auchan Retail Spain tiene la declaración corporativa de compromiso con el talento senior. La pieza que falta en Polonia es la conexión entre ambas: traducir el compromiso declarativo en programas concretos, medibles y comunicados activamente — el mismo camino que Lidl GB completó en noviembre de 2024 y que aún no ha replicado Lidl Polska.</p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="div">
+
+<!-- ══ FUENTES ════════════════════════════════════════════════════════════════ -->
+<section class="section up" id="fuentes">
+  <div class="sec-head">
+    <div class="sec-num">10</div>
+    <div class="sec-head-r">
+      <div class="eyebrow">Referencias</div>
+      <h2 class="sec-title">Fuentes y referencias</h2>
+    </div>
+  </div>
+  <div class="src-grid">
+    <div class="src">Verita HR / Magazyn Rekruter — «Generation X: And Then a Long, Long Void», enero 2026 (proyecto GeeX)</div>
+    <div class="src">AARP / LinkedIn — «The Untapped Value Older Workers Bring to the Multigenerational Workforce», diciembre 2025</div>
+    <div class="src">iHire — Inside the Multigenerational Workforce Report 2025 (+5.000 trabajadores encuestados)</div>
+    <div class="src">OCDE — «Career Paths and Engagement of Mature Workers», 2024 (caso Schneider Electric)</div>
+    <div class="src">EDGE Certified Foundation — EquiNations Report, abril 2025 (tasas empleo 55–64 UE)</div>
+    <div class="src">Employee Benefits UK — «Lidl GB accredited as age inclusive employer», noviembre 2024</div>
+    <div class="src">55/Redefined / Work/Redefined — Age-Inclusive Accreditation methodology; Shut Out, Forced Out, Overlooked</div>
+    <div class="src">People Management UK — «Is age bias undermining the Get Britain Working initiative?», enero 2025</div>
+    <div class="src">Society of Occupational Medicine UK — «B&amp;Q and Ageing Workers» (Macclesfield case + 30 años)</div>
+    <div class="src">UK Gov / DWP — 50PLUS Champions press release, noviembre 2023 (datos plantilla B&amp;Q)</div>
+    <div class="src">Korn Ferry — Workforce 2025 Report (beneficios valorados por generación)</div>
+    <div class="src">Bank of America — Multigenerational Workforce Research 2024 (razones de cambio por generación)</div>
+    <div class="src">Decathlon Group — ESG Report 2024 / Diversity and Inclusion Strategy 2024</div>
+    <div class="src">Auchan Retail — Página corporativa de empleo / Responsible economic behavior commitments</div>
+    <div class="src">Microsoft / LinkedIn — 2024 Work Trend Index (adopción IA por grupo de edad)</div>
+    <div class="src">Steal These Thoughts — «How IKEA Reskilled 8,500 Employees», septiembre 2024</div>
+    <div class="src">WEF — «How organizations can embrace older workers amid an ageing global workforce», septiembre 2023</div>
+    <div class="src">Randstad REBR 2025 — Employer Brand Research Poland (4.623 encuestados polacos)</div>
+    <div class="src">AGE Platform Europe — Poland Country Assessment 2023 (tasa empleo 50–64)</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>Talento Senior en Retail — Gen X y Mayores de 50 Años</strong><br>
+  Qué está haciendo el sector actualmente · Parte II de la investigación Retail Polonia<br>
+  Investigación compilada por <span class="pu">Claude</span> (Anthropic) para uso interno · Alcampo · Febrero 2026
+</footer>
+
+<script>
+// ── Scroll animations
+const io = new IntersectionObserver(e => {
+  e.forEach(el => { if (el.isIntersecting) { el.target.classList.add('in'); io.unobserve(el.target); } });
+}, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.up').forEach(el => io.observe(el));
+
+// ── Active nav
+const navIo = new IntersectionObserver(e => {
+  e.forEach(el => {
+    if (el.isIntersecting) {
+      document.querySelectorAll('.navl').forEach(l => {
+        l.classList.toggle('on', l.getAttribute('href') === '#' + el.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-38% 0px -58% 0px' });
+document.querySelectorAll('section[id]').forEach(s => navIo.observe(s));
+
+// ── Bar animations — trigger when visible
+const barIo = new IntersectionObserver(e => {
+  e.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.querySelectorAll('.bar-fill').forEach((b, i) => {
+        b.style.animationDelay = `${i * 0.08}s`;
+        b.style.animationPlayState = 'running';
+      });
+      barIo.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.bars').forEach(el => {
+  el.querySelectorAll('.bar-fill').forEach(b => b.style.animationPlayState = 'paused');
+  barIo.observe(el);
+});
+</script>
+</body>
+</html>
