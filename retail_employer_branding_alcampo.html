@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail en Polonia — Employer Branding · Alcampo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ══ DESIGN TOKENS ══════════════════════════════════════════════════════════ */
+:root {
+  --red:       #E8262A;
+  --red-dark:  #B51E21;
+  --red-pale:  #FFF1F1;
+  --orange:    #F47B20;
+  --orange-pale:#FFF4E8;
+  --cobalt:    #1B4FD8;
+  --cobalt-dark:#0F2E9E;
+  --cobalt-pale:#EEF3FF;
+  --lime:      #A8CC3C;
+  --lime-dark: #7EA022;
+  --charcoal:  #111118;
+  --ink:       #1E1E2A;
+  --mid:       #5A5A72;
+  --ghost:     #EFEFF4;
+  --paper:     #FAFAF9;
+  --white:     #FFFFFF;
+
+  --ff-black:  'Archivo Black', sans-serif;
+  --ff-cond:   'Barlow Condensed', sans-serif;
+  --ff-body:   'Archivo', sans-serif;
+
+  --radius:    4px;
+  --rule:      1px solid rgba(0,0,0,.09);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--charcoal); }
+::-webkit-scrollbar-thumb { background: var(--red); }
+
+/* ══ HERO ═══════════════════════════════════════════════════════════════════ */
+.hero {
+  background: var(--charcoal);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 72px 1fr auto;
+}
+
+/* diagonal color block */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 48%;
+  height: 100%;
+  background: var(--red);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+/* dot grid on red side */
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: radial-gradient(rgba(255,255,255,.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(90deg, transparent 45%, rgba(0,0,0,.6) 60%, black 100%);
+  pointer-events: none;
+}
+
+.hero-topbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-badge {
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--ff-black);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .3rem .8rem;
+  border-radius: 2px;
+}
+
+.hero-for {
+  font-family: var(--ff-body);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+}
+
+.hero-meta {
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.3);
+  font-family: var(--ff-body);
+}
+
+.hero-body {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 4rem;
+  gap: 4rem;
+}
+
+.hero-left {}
+
+.hero-pre {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-pre-line {
+  width: 32px; height: 2px;
+  background: var(--orange);
+}
+
+.hero-pre-text {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.hero-h1 {
+  font-family: var(--ff-cond);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: .92;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-h1 span {
+  display: block;
+  color: var(--white);
+}
+
+.hero-h1 em {
+  display: block;
+  font-style: normal;
+  color: var(--red);
+  background: var(--white);
+  padding: .05em .15em;
+  margin-left: -.1em;
+  width: fit-content;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,.55);
+  max-width: 440px;
+  line-height: 1.7;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-stat-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  backdrop-filter: blur(4px);
+  transition: background .2s;
+}
+
+.hero-stat-card:hover { background: rgba(255,255,255,.11); }
+
+.stat-big {
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: var(--white);
+  min-width: 5rem;
+  text-align: center;
+}
+
+.stat-big.accent { color: var(--orange); }
+
+.stat-info {}
+.stat-label { font-size: .78rem; font-weight: 600; color: var(--white); margin-bottom: .15rem; }
+.stat-sub { font-size: .72rem; color: rgba(255,255,255,.4); }
+
+.hero-bottom {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 1rem 4rem;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 2px;
+  padding: .25rem .75rem;
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  transition: border-color .2s, color .2s;
+}
+
+.chip:hover { border-color: var(--orange); color: var(--orange); }
+
+/* ══ NAV ════════════════════════════════════════════════════════════════════ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--white);
+  border-bottom: 3px solid var(--red);
+  box-shadow: 0 2px 20px rgba(0,0,0,.08);
+}
+
+.nav-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-link {
+  font-family: var(--ff-body);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mid);
+  padding: 1rem 1.1rem;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: color .2s, border-color .2s;
+}
+
+.nav-link:hover { color: var(--red); }
+.nav-link.active { color: var(--red); border-bottom-color: var(--red); }
+
+/* ══ LAYOUT ════════════════════════════════════════════════════════════════ */
+.main { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+
+/* ══ SECTION ═══════════════════════════════════════════════════════════════ */
+.section { padding: 5rem 0; }
+
+.sec-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0;
+  margin-bottom: 3rem;
+}
+
+.sec-num-block {
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 4.5rem;
+  line-height: 1;
+  padding: .1em .4em;
+  text-align: center;
+  letter-spacing: -.02em;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.sec-head-right {
+  border-top: 3px solid var(--red);
+  border-bottom: 1px solid var(--rule);
+  padding: .75rem 0 .75rem 1.5rem;
+}
+
+.sec-eyebrow {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: .35rem;
+}
+
+.sec-title {
+  font-family: var(--ff-black);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--charcoal);
+  letter-spacing: -.02em;
+}
+
+/* alternating section accent colors */
+.section:nth-child(even) .sec-num-block { background: var(--cobalt); }
+.section:nth-child(even) .sec-eyebrow { color: var(--cobalt); }
+.section:nth-child(even) .sec-head-right { border-top-color: var(--cobalt); }
+
+.section:nth-child(3n) .sec-num-block { background: var(--orange); }
+.section:nth-child(3n) .sec-eyebrow { color: var(--orange); }
+.section:nth-child(3n) .sec-head-right { border-top-color: var(--orange); }
+
+.divider {
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--orange), var(--cobalt));
+  border: none;
+  margin: 0;
+}
+
+/* ══ TYPOGRAPHY ════════════════════════════════════════════════════════════ */
+p { font-size: .97rem; line-height: 1.8; color: #2c2c3a; margin-bottom: 1rem; text-align: justify; }
+p:last-child { margin-bottom: 0; }
+
+.sub-title {
+  font-family: var(--ff-black);
+  font-size: 1.15rem;
+  color: var(--charcoal);
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--ghost);
+  letter-spacing: -.01em;
+}
+
+.sub-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin: 2rem 0 .75rem;
+}
+
+/* ══ TABLES ════════════════════════════════════════════════════════════════ */
+.tbl-wrap { overflow-x: auto; margin: 1.5rem 0; border-radius: var(--radius); border: 1px solid #dddde8; }
+
+table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+
+thead { background: var(--charcoal); }
+thead th {
+  padding: .85rem 1rem;
+  text-align: left;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  white-space: nowrap;
+}
+
+thead th:first-child { color: var(--orange); }
+
+tbody tr { transition: background .15s; }
+tbody tr:nth-child(even) { background: #F5F5FA; }
+tbody tr:hover { background: var(--cobalt-pale); }
+
+tbody td {
+  padding: .8rem 1rem;
+  border-bottom: 1px solid #EEEEF4;
+  vertical-align: top;
+  line-height: 1.5;
+  font-size: .875rem;
+}
+
+tbody td:first-child { font-weight: 700; color: var(--charcoal); }
+
+.rk {
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--red);
+  opacity: .45;
+}
+
+.td-green { color: #1a6b40; font-size: .83rem; }
+.td-orange { color: #9a4200; font-size: .83rem; }
+
+/* ══ HIGHLIGHT BOXES ═══════════════════════════════════════════════════════ */
+.hbox {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 2rem 0;
+  border: 1px solid #dddde8;
+}
+
+.hbox-head {
+  padding: .85rem 1.4rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.hbox-head.red    { background: var(--red); }
+.hbox-head.cobalt { background: var(--cobalt); }
+.hbox-head.orange { background: var(--orange); }
+.hbox-head.lime   { background: var(--lime-dark); }
+
+.hbox-items {}
+
+.hbox-row {
+  display: flex;
+  gap: 1rem;
+  padding: .75rem 1.4rem;
+  border-bottom: 1px solid #EEEEF4;
+  font-size: .9rem;
+  color: var(--ink);
+  line-height: 1.55;
+  align-items: flex-start;
+  transition: background .15s;
+}
+
+.hbox-row:last-child { border-bottom: none; }
+.hbox-row:nth-child(even) { background: #F9F9FC; }
+.hbox-row:hover { background: var(--cobalt-pale); }
+
+.hbox-arr {
+  flex-shrink: 0;
+  margin-top: .08rem;
+  font-size: .8rem;
+  font-weight: 900;
+}
+
+.hbox-arr.red    { color: var(--red); }
+.hbox-arr.cobalt { color: var(--cobalt); }
+.hbox-arr.orange { color: var(--orange); }
+.hbox-arr.lime   { color: var(--lime-dark); }
+
+/* ══ COMPANY CARDS ════════════════════════════════════════════════════════ */
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.cc {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #dddde8;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.cc:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.12); }
+
+.cc-head {
+  padding: 1.25rem 1.4rem 1rem;
+  position: relative;
+}
+
+.cc-head.red    { background: var(--red); }
+.cc-head.cobalt { background: var(--cobalt); }
+.cc-head.orange { background: var(--orange); }
+.cc-head.lime   { background: var(--lime-dark); }
+.cc-head.dark   { background: var(--charcoal); }
+.cc-head.plum   { background: #5B2D8E; }
+.cc-head.forest { background: #1A5C45; }
+
+.cc-name {
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.cc-parent {
+  font-size: .72rem;
+  color: rgba(255,255,255,.6);
+  margin-top: .25rem;
+  font-weight: 500;
+}
+
+.cc-badge {
+  position: absolute;
+  top: 1rem; right: 1.2rem;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: var(--white);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .25rem .6rem;
+  border-radius: 2px;
+  max-width: 140px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.cc-body { padding: 1.25rem 1.4rem; background: var(--white); }
+
+.cc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+  margin-bottom: 1.1rem;
+}
+
+.cc-kv {}
+.cc-k {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: .1rem;
+}
+.cc-v { font-size: .88rem; font-weight: 600; color: var(--charcoal); }
+
+.cc-evp {
+  font-size: .875rem;
+  color: #3a3a50;
+  font-style: italic;
+  line-height: 1.6;
+  padding: .9rem 1rem;
+  background: var(--ghost);
+  border-radius: var(--radius);
+  border-left: 3px solid;
+  margin-bottom: 1rem;
+}
+
+.cc-evp.red    { border-color: var(--red); }
+.cc-evp.cobalt { border-color: var(--cobalt); }
+.cc-evp.orange { border-color: var(--orange); }
+.cc-evp.lime   { border-color: var(--lime-dark); }
+.cc-evp.plum   { border-color: #5B2D8E; }
+.cc-evp.forest { border-color: #1A5C45; }
+.cc-evp.dark   { border-color: var(--charcoal); }
+
+.cc-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+.ctag {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: .25rem .65rem;
+  border-radius: 2px;
+  border: 1px solid;
+}
+
+.ctag.red    { color: var(--red);       border-color: rgba(232,38,42,.25);  background: var(--red-pale); }
+.ctag.cobalt { color: var(--cobalt);    border-color: rgba(27,79,216,.25);  background: var(--cobalt-pale); }
+.ctag.orange { color: var(--red-dark);  border-color: rgba(244,123,32,.3);  background: var(--orange-pale); }
+
+/* ══ DRIVER BARS ═══════════════════════════════════════════════════════════ */
+.drivers { margin: 2rem 0; display: flex; flex-direction: column; gap: .85rem; }
+
+.dr {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr 3.5rem;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.dr-num {
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--red);
+  opacity: .35;
+  text-align: right;
+  line-height: 1;
+}
+
+.dr-info { display: flex; flex-direction: column; gap: .35rem; }
+
+.dr-name {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.dr-tag {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .15rem .5rem;
+  border-radius: 2px;
+  background: var(--lime);
+  color: var(--charcoal);
+}
+
+.dr-track {
+  height: 7px;
+  background: var(--ghost);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dr-fill {
+  height: 100%;
+  border-radius: 4px;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: grow 1s cubic-bezier(.34,1.4,.64,1) forwards;
+}
+
+@keyframes grow { to { transform: scaleX(1); } }
+
+.dr-fill.red    { background: linear-gradient(90deg, var(--red), var(--orange)); }
+.dr-fill.cobalt { background: linear-gradient(90deg, var(--cobalt), #4B8BFF); }
+
+.dr-pct {
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--charcoal);
+  text-align: right;
+}
+
+/* ══ CERT GRID ════════════════════════════════════════════════════════════ */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.cert {
+  border: 1px solid #dddde8;
+  border-radius: 6px;
+  padding: 1.2rem;
+  background: var(--white);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.cert:hover { box-shadow: 0 6px 20px rgba(0,0,0,.09); transform: translateY(-2px); }
+
+.cert-ico { font-size: 1.6rem; margin-bottom: .6rem; }
+
+.cert-name {
+  font-weight: 700;
+  font-size: .88rem;
+  color: var(--charcoal);
+  margin-bottom: .35rem;
+  letter-spacing: -.01em;
+}
+
+.cert-desc { font-size: .78rem; color: var(--mid); line-height: 1.5; }
+
+.cert-who {
+  margin-top: .75rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.cert-who.red    { color: var(--red); }
+.cert-who.cobalt { color: var(--cobalt); }
+.cert-who.orange { color: var(--orange); }
+
+/* ══ TREND CARDS ══════════════════════════════════════════════════════════ */
+.trends {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.1rem;
+  margin: 2rem 0;
+}
+
+.trend {
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform .2s;
+}
+
+.trend:hover { transform: translateY(-3px); }
+
+.trend-header {
+  padding: 1.1rem 1.3rem .8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+}
+
+.trend-header.red    { background: var(--red); }
+.trend-header.cobalt { background: var(--cobalt); }
+.trend-header.orange { background: var(--orange); }
+.trend-header.lime   { background: var(--lime-dark); }
+.trend-header.plum   { background: #5B2D8E; }
+.trend-header.dark   { background: var(--charcoal); }
+
+.trend-n {
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: rgba(255,255,255,.3);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: .05rem;
+}
+
+.trend-title-wrap {}
+.trend-tag-small {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  margin-bottom: .2rem;
+}
+
+.trend-title {
+  font-family: var(--ff-black);
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.trend-body-wrap {
+  padding: 1rem 1.3rem 1.25rem;
+  background: var(--white);
+  border: 1px solid #dddde8;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  font-size: .875rem;
+  color: #3a3a50;
+  line-height: 1.65;
+}
+
+/* ══ PRIORITIES ═══════════════════════════════════════════════════════════ */
+.pri-list { margin: 2rem 0; }
+
+.pri {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--ghost);
+}
+
+.pri:last-child { border-bottom: none; }
+
+.pri-left { display: flex; flex-direction: column; align-items: center; }
+
+.pri-circle {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-cond);
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.pri-circle.red    { background: var(--red); }
+.pri-circle.cobalt { background: var(--cobalt); }
+.pri-circle.orange { background: var(--orange); }
+.pri-circle.lime   { background: var(--lime-dark); }
+
+.pri-line {
+  flex: 1;
+  width: 2px;
+  margin-top: .5rem;
+  background: linear-gradient(to bottom, currentColor, transparent);
+  opacity: .25;
+}
+
+.pri-right {}
+
+.pri-title {
+  font-family: var(--ff-black);
+  font-size: 1.15rem;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+  letter-spacing: -.01em;
+}
+
+.pri-items { list-style: none; }
+
+.pri-item {
+  font-size: .9rem;
+  padding: .55rem 0 .55rem 1.2rem;
+  border-bottom: 1px solid var(--ghost);
+  color: #3a3a50;
+  position: relative;
+  line-height: 1.55;
+  margin: 0;
+  text-align: left;
+}
+
+.pri-item::before {
+  content: '›';
+  position: absolute; left: 0;
+  font-weight: 900;
+  font-size: .9rem;
+}
+
+.pri-item:last-child { border-bottom: none; }
+
+.pri-item.red::before    { color: var(--red); }
+.pri-item.cobalt::before { color: var(--cobalt); }
+.pri-item.orange::before { color: var(--orange); }
+.pri-item.lime::before   { color: var(--lime-dark); }
+
+/* ══ PLATFORM CARDS ═══════════════════════════════════════════════════════ */
+.platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.plat {
+  background: var(--white);
+  border: 1px solid #dddde8;
+  border-radius: 6px;
+  padding: 1.2rem;
+  border-top: 4px solid;
+  transition: box-shadow .2s;
+}
+
+.plat:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+
+.plat.red    { border-top-color: var(--red); }
+.plat.cobalt { border-top-color: var(--cobalt); }
+.plat.orange { border-top-color: var(--orange); }
+.plat.lime   { border-top-color: var(--lime-dark); }
+.plat.mid    { border-top-color: var(--mid); }
+
+.plat-name {
+  font-weight: 700;
+  font-size: .97rem;
+  color: var(--charcoal);
+  margin-bottom: .2rem;
+  letter-spacing: -.01em;
+}
+
+.plat-traffic {
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: .65rem;
+}
+
+.plat-for { font-size: .85rem; color: #3a3a50; line-height: 1.55; }
+
+.plat-tag {
+  display: inline-block;
+  margin-top: .65rem;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .2rem .65rem;
+  border-radius: 2px;
+}
+
+.plat-tag.red    { background: var(--red-pale);    color: var(--red-dark); }
+.plat-tag.cobalt { background: var(--cobalt-pale); color: var(--cobalt-dark); }
+.plat-tag.orange { background: var(--orange-pale); color: #7a3d00; }
+
+/* ══ SECTOR CARDS ════════════════════════════════════════════════════════ */
+.sectors {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 680px) { .sectors { grid-template-columns: 1fr; } }
+
+.sec-card {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #dddde8;
+}
+
+.sec-card-head {
+  padding: 1rem 1.4rem;
+  font-family: var(--ff-black);
+  font-size: 1rem;
+  color: var(--white);
+  letter-spacing: -.01em;
+}
+
+.sec-card-head.red    { background: var(--red); }
+.sec-card-head.cobalt { background: var(--cobalt); }
+.sec-card-head.orange { background: var(--orange); }
+.sec-card-head.lime   { background: var(--lime-dark); }
+
+.sec-card-body {
+  padding: 1.1rem 1.4rem;
+  background: var(--white);
+}
+
+.sec-card-body p {
+  font-size: .875rem;
+  margin-bottom: .75rem;
+  text-align: left;
+}
+
+.sec-lessons { list-style: none; }
+
+.sec-lesson {
+  font-size: .85rem;
+  padding: .4rem 0 .4rem 1.1rem;
+  position: relative;
+  color: #3a3a50;
+  border-bottom: 1px solid var(--ghost);
+  margin: 0;
+  text-align: left;
+}
+
+.sec-lesson::before { content: '·'; position: absolute; left: .25rem; font-weight: 900; font-size: 1.1rem; line-height: 1.4; }
+.sec-lesson:last-child { border-bottom: none; }
+
+/* ══ SOURCES ══════════════════════════════════════════════════════════════ */
+.sources {
+  columns: 2;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 680px) { .sources { columns: 1; } }
+
+.src {
+  break-inside: avoid;
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--ghost);
+  font-size: .85rem;
+  color: #3a3a50;
+  display: flex;
+  gap: .6rem;
+  align-items: flex-start;
+}
+
+.src::before { content: '—'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+
+/* ══ SCROLL ANIMATIONS ═══════════════════════════════════════════════════ */
+.up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.up.in { opacity: 1; transform: none; }
+
+/* ══ FOOTER ══════════════════════════════════════════════════════════════ */
+footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,.35);
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: .78rem;
+  line-height: 1.9;
+}
+
+footer strong { color: var(--white); }
+footer .red   { color: var(--red); }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero::after { display: none; }
+  .hero-body { grid-template-columns: 1fr; padding: 2.5rem 2rem; gap: 2rem; }
+  .hero-topbar, .hero-bottom { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero-right { display: grid; grid-template-columns: 1fr 1fr; }
+  .sec-num-block { font-size: 3rem; min-width: 60px; }
+  .sec-title { font-size: 1.5rem; }
+  .company-grid { grid-template-columns: 1fr; }
+  .main { padding: 0 1.25rem; }
+  .section { padding: 3rem 0; }
+  .pri { grid-template-columns: 56px 1fr; gap: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-dots"></div>
+
+  <div class="hero-topbar">
+    <div class="hero-brand">
+      <span class="hero-badge">Research</span>
+      <span class="hero-for">Alcampo · Dept. de Personas</span>
+    </div>
+    <span class="hero-meta">Febrero 2026 · Uso interno</span>
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-left">
+      <div class="hero-pre">
+        <div class="hero-pre-line"></div>
+        <span class="hero-pre-text">Análisis de mercado laboral</span>
+      </div>
+      <h1 class="hero-h1">
+        <span>Retail</span>
+        <em>en Polonia</em>
+        <span>Employer</span>
+        <span>Branding</span>
+      </h1>
+      <p class="hero-sub">Cómo los principales retailers se venden como empleadores, dónde buscan talento, qué valores comunican y cómo se posicionan en los rankings más influyentes del mercado polaco.</p>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stat-card">
+        <div class="stat-big accent">800K+</div>
+        <div class="stat-info">
+          <div class="stat-label">Empleados directos en el sector</div>
+          <div class="stat-sub">Tiendas, DCs y oficinas corporativas</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-big">7</div>
+        <div class="stat-info">
+          <div class="stat-label">Empresas analizadas en profundidad</div>
+          <div class="stat-sub">EVP, canales, certificaciones, campañas</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-big accent">4.623</div>
+        <div class="stat-info">
+          <div class="stat-label">Encuestados Randstad REBR 2025</div>
+          <div class="stat-sub">Metodología Kantar · Feb 2025</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-big">600K</div>
+        <div class="stat-info">
+          <div class="stat-label">Millones PLN facturados</div>
+          <div class="stat-sub">Ingresos totales del sector retail 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <span class="chip">Biedronka</span>
+    <span class="chip">Lidl Polska</span>
+    <span class="chip">Żabka Group</span>
+    <span class="chip">Kaufland</span>
+    <span class="chip">Decathlon</span>
+    <span class="chip">LPP Group</span>
+    <span class="chip">IKEA Poland</span>
+    <span class="chip">Randstad REBR 2025</span>
+    <span class="chip">Great Place to Work</span>
+    <span class="chip">Gallup EWA</span>
+    <span class="chip">Top Employer Institute</span>
+  </div>
+</header>
+
+<hr class="divider">
+
+<!-- ══ NAV ═══════════════════════════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-link" href="#mercado">Mercado</a>
+    <a class="nav-link" href="#rankings">Rankings</a>
+    <a class="nav-link" href="#empresas">Empresas</a>
+    <a class="nav-link" href="#empleados">Qué quieren</a>
+    <a class="nav-link" href="#canales">Canales</a>
+    <a class="nav-link" href="#fuera">Fuera del sector</a>
+    <a class="nav-link" href="#tendencias">Tendencias</a>
+    <a class="nav-link" href="#recomendaciones">Recomendaciones</a>
+    <a class="nav-link" href="#comparativa">Comparativa</a>
+  </div>
+</nav>
+
+<!-- ══ MAIN ═══════════════════════════════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- ── 01 MERCADO ──────────────────────────────────────────────────────── -->
+  <section class="section up" id="mercado">
+    <div class="sec-head">
+      <div class="sec-num-block">01</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Panorama del mercado</div>
+        <h2 class="sec-title">Mercado Retail Polaco como Empleador</h2>
+      </div>
+    </div>
+
+    <p>El mercado retail de Polonia es uno de los más grandes de Europa Central y del Este, dominado por una combinación de gigantes globales y jugadores domésticos de rápido crecimiento. En 2024, los ingresos totales del comercio minorista superaron los <strong>600.000 millones de PLN</strong>. El sector emplea directamente a más de 800.000 personas en redes de tiendas, centros de distribución y oficinas corporativas — convirtiéndolo en uno de los pilares de empleo más críticos del país.</p>
+    <p>El mercado se polariza rápidamente: las cadenas de descuento alimentario (Biedronka, Lidl, Dino) aceleran, las tiendas de conveniencia (Żabka) explotan en número de puntos de venta, y los líderes de moda rápida como LPP se expanden internacionalmente. Esto crea un campo de batalla ferozmente competitivo no solo por clientes, sino por talento.</p>
+
+    <div class="sub-title">Principales jugadores por facturación (2024)</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Empresa</th><th>Segmento</th><th>Facturación</th><th>Escala</th></tr></thead>
+        <tbody>
+          <tr><td>Biedronka</td><td>Descuento alimentación</td><td>~102.000 M PLN</td><td>3.730 tiendas</td></tr>
+          <tr><td>LPP Group</td><td>Moda (Reserved, Sinsay, Cropp…)</td><td>~20.000 M PLN</td><td>2.200+ tiendas globales</td></tr>
+          <tr><td>Dino Polska</td><td>Proximidad alimentación</td><td>~20.000 M PLN</td><td>2.688 tiendas</td></tr>
+          <tr><td>Lidl Polska</td><td>Descuento alimentación</td><td>~35.000 M PLN</td><td>~900 tiendas</td></tr>
+          <tr><td>Kaufland</td><td>Hipermercados</td><td>~13.600 M PLN</td><td>250+ tiendas</td></tr>
+          <tr><td>Żabka Group</td><td>Conveniencia</td><td>~12.000 M PLN</td><td>11.793 tiendas</td></tr>
+          <tr><td>IKEA Poland</td><td>Hogar</td><td>~5.000 M PLN</td><td>10+ tiendas</td></tr>
+          <tr><td>Auchan Polska</td><td>Hipermercados</td><td>~8.000 M PLN</td><td>~60 tiendas</td></tr>
+          <tr><td>Rossmann</td><td>Salud y Belleza</td><td>~6.000 M PLN</td><td>1.500+ tiendas</td></tr>
+          <tr><td>Decathlon</td><td>Deporte</td><td>~3.000 M PLN est.</td><td>60+ tiendas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 02 RANKINGS ─────────────────────────────────────────────────────── -->
+  <section class="section up" id="rankings">
+    <div class="sec-head">
+      <div class="sec-num-block">02</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Investigaciones independientes</div>
+        <h2 class="sec-title">Cómo puntúan los retailers como empleadores</h2>
+      </div>
+    </div>
+
+    <div class="sub-title">Forbes / Statista — Mejores Empleadores de Polonia 2025</div>
+    <p>Ranking cross-sectorial basado en más de 400.000 evaluaciones anónimas de empleados en 25 sectores. Mide la probabilidad de recomendar al propio empleador. Tres de los diez primeros son empresas de deporte o moda.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Empresa</th><th>Sector</th><th>Drivers clave</th></tr></thead>
+        <tbody>
+          <tr><td class="rk">1</td><td>Adidas</td><td>Deporte / Moda Retail</td><td>Marca de consumo, cultura sólida e identidad deportiva</td></tr>
+          <tr><td class="rk">2</td><td>Intel</td><td>Tecnología</td><td>Salarios altos, estabilidad, enfoque en I+D</td></tr>
+          <tr><td class="rk">3</td><td>Hilton</td><td>Hostelería</td><td>Cultura orientada al cliente, carreras globales</td></tr>
+          <tr><td class="rk">4</td><td>Microsoft</td><td>Tecnología</td><td>Innovación, flexibilidad, programas de aprendizaje</td></tr>
+          <tr><td class="rk">5</td><td>Google</td><td>Tecnología</td><td>Referente global de employer brand</td></tr>
+          <tr><td class="rk">6</td><td><strong>Decathlon</strong></td><td><strong>Retail Deportivo ✓</strong></td><td>Propósito, cultura de deporte, autonomía</td></tr>
+          <tr><td class="rk">7</td><td>Deichmann</td><td>Moda Retail ✓</td><td>Estabilidad, ambiente amigable</td></tr>
+          <tr><td class="rk">8</td><td>Nike</td><td>Retail Deportivo ✓</td><td>Poder de marca, plantilla apasionada</td></tr>
+          <tr><td class="rk">9</td><td>Samsung</td><td>Electronics Retail</td><td>Innovación tecnológica, remuneración competitiva</td></tr>
+          <tr><td class="rk">10</td><td>CD Projekt</td><td>Gaming / Retail</td><td>Cultura creativa, orgullo polaco</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-title">Randstad REBR 2025 — Top 10 Empleadores Más Atractivos de Polonia</div>
+    <p><strong>Allegro</strong> (e-commerce/retail) es el único representante del consumo en el top 10. El ranking lo dominan automoción y fabricación. Clave: Randstad mide <em>«¿querrías trabajar allí?»</em>, no satisfacción real de empleados.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Empresa</th><th>Sector</th><th>Por qué es atractivo</th></tr></thead>
+        <tbody>
+          <tr><td class="rk">1</td><td><strong>Allegro</strong></td><td>E-commerce / Retail</td><td>Marca polaca dominante, innovadora, buena remuneración</td></tr>
+          <tr><td class="rk">2</td><td>LG Energy Solution Wrocław</td><td>Fabricación</td><td>Nuevo líder sectorial, salarios muy elevados</td></tr>
+          <tr><td class="rk">3</td><td>Volvo Poland</td><td>Automoción</td><td>Estabilidad, excelentes beneficios, marca global</td></tr>
+          <tr><td class="rk">4</td><td>Fujitsu Technology Solutions</td><td>Tecnología</td><td>Desarrollo profesional, inversión en formación</td></tr>
+          <tr><td class="rk">5</td><td>Grupo TZMO</td><td>Fabricación / Sanidad</td><td>Empleador polaco estable, cultura ética</td></tr>
+          <tr><td class="rk">6</td><td>Toyota Motor Manufacturing Poland</td><td>Automoción</td><td>Cultura lean, seguridad laboral, salarios altos</td></tr>
+          <tr><td class="rk">7</td><td>Eco-Windows</td><td>Fabricación</td><td>Crecimiento rápido, centrado en empleados</td></tr>
+          <tr><td class="rk">8</td><td>PGE Polish Energy Group</td><td>Energía</td><td>Estabilidad, seguridad estatal</td></tr>
+          <tr><td class="rk">9</td><td>Saint-Gobain en Polonia</td><td>Fabricación</td><td>Cultura de seguridad, planes de carrera</td></tr>
+          <tr><td class="rk">10</td><td>KGHM Polska Miedź</td><td>Minería</td><td>Empleador consolidado; salarios, estabilidad, reputación</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-title">Certificaciones y premios activos en el mercado polaco</div>
+    <div class="cert-grid">
+      <div class="cert">
+        <div class="cert-ico">🏆</div>
+        <div class="cert-name">Gallup Exceptional Workplace</div>
+        <div class="cert-desc">Basada en el Gallup Q12. Máximo estándar mundial de engagement.</div>
+        <div class="cert-who red">→ Żabka Group (única empresa polaca, 3 años consecutivos)</div>
+      </div>
+      <div class="cert">
+        <div class="cert-ico">⭐</div>
+        <div class="cert-name">Top Employer Institute</div>
+        <div class="cert-desc">Evaluación independiente de excelencia en RR.HH. en 6 pilares.</div>
+        <div class="cert-who cobalt">→ Lidl Polska (2024), Rossmann</div>
+      </div>
+      <div class="cert">
+        <div class="cert-ico">🤝</div>
+        <div class="cert-name">Great Place to Work</div>
+        <div class="cert-desc">Trust Index: credibilidad, respeto, equidad, orgullo y compañerismo.</div>
+        <div class="cert-who orange">→ IKEA, Żabka, Decathlon</div>
+      </div>
+      <div class="cert">
+        <div class="cert-ico">⚖️</div>
+        <div class="cert-name">Equal Salary Certification</div>
+        <div class="cert-desc">Certificación internacional de equidad salarial por género.</div>
+        <div class="cert-who red">→ Żabka Group</div>
+      </div>
+      <div class="cert">
+        <div class="cert-ico">🌿</div>
+        <div class="cert-name">EcoVadis Platinum</div>
+        <div class="cert-desc">Top 1% mundial en sostenibilidad corporativa.</div>
+        <div class="cert-who cobalt">→ Żabka Group (2024)</div>
+      </div>
+      <div class="cert">
+        <div class="cert-ico">♀️</div>
+        <div class="cert-name">EDGE Certification</div>
+        <div class="cert-desc">Líder global en equidad de género. Primera marca deportiva en conseguirla.</div>
+        <div class="cert-who orange">→ Decathlon Group</div>
+      </div>
+      <div class="cert">
+        <div class="cert-ico">🎓</div>
+        <div class="cert-name">AIESEC Employer of the Year</div>
+        <div class="cert-desc">Perspectiva estudiantil. Encuesta a las organizaciones más grandes de alumnos.</div>
+        <div class="cert-who red">→ Kaufland (junto a Google y EY)</div>
+      </div>
+      <div class="cert">
+        <div class="cert-ico">🏅</div>
+        <div class="cert-name">HRM Institute EBEA</div>
+        <div class="cert-desc">Employer Branding Excellence Awards — el concurso EB premier de Polonia.</div>
+        <div class="cert-who cobalt">→ Biedronka, Żabka, Kaufland</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 03 EMPRESAS ─────────────────────────────────────────────────────── -->
+  <section class="section up" id="empresas">
+    <div class="sec-head">
+      <div class="sec-num-block">03</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Análisis en profundidad</div>
+        <h2 class="sec-title">Perfiles de los principales jugadores retail</h2>
+      </div>
+    </div>
+
+    <div class="company-grid">
+
+      <div class="cc">
+        <div class="cc-head red">
+          <span class="cc-badge">EBEA 2024</span>
+          <div class="cc-name">Biedronka</div>
+          <div class="cc-parent">Jeronimo Martins Polska · Portugal</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-grid">
+            <div class="cc-kv"><div class="cc-k">Empleados</div><div class="cc-v">~75.000</div></div>
+            <div class="cc-kv"><div class="cc-k">Facturación 2024</div><div class="cc-v">102.000 M PLN</div></div>
+            <div class="cc-kv"><div class="cc-k">Tiendas</div><div class="cc-v">3.730</div></div>
+            <div class="cc-kv"><div class="cc-k">Salario entrada (2025)</div><div class="cc-v">5.500 PLN/mes</div></div>
+          </div>
+          <div class="cc-evp red">«Dobre Miejsce do Pracy» — El mayor empleador privado de Polonia. EVP centrada en escala, estabilidad y transparencia salarial. En enero 2025 anunció subidas del +10,5% destinando 450M PLN anuales — el propio anuncio funcionó como campaña de PR de employer brand.</div>
+          <div class="cc-tags">
+            <span class="ctag red">Pracuj.pl</span><span class="ctag red">OLX Praca</span><span class="ctag red">LinkedIn</span><span class="ctag red">Web propia</span><span class="ctag red">Carteles tienda</span><span class="ctag red">Ferias universitarias</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc-head cobalt">
+          <span class="cc-badge">Top Employer 2024</span>
+          <div class="cc-name">Lidl Polska</div>
+          <div class="cc-parent">Schwarz Group · Alemania</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-grid">
+            <div class="cc-kv"><div class="cc-k">Empleados</div><div class="cc-v">~30.000</div></div>
+            <div class="cc-kv"><div class="cc-k">Facturación 2024</div><div class="cc-v">~35.000 M PLN</div></div>
+            <div class="cc-kv"><div class="cc-k">Tiendas</div><div class="cc-v">~900</div></div>
+            <div class="cc-kv"><div class="cc-k">Valor añadido PL</div><div class="cc-v">11.400 M PLN</div></div>
+          </div>
+          <div class="cc-evp cobalt">Campañas «Praca na lata» (Trabajo para años) y «Eres LIDLeal» — ataca el estigma del retail directamente. Reencuadra el empleo como carrera a largo plazo, no como solución temporal. El juego de palabras refuerza el compromiso mutuo con campañas integrales en TV, video y redes.</div>
+          <div class="cc-tags">
+            <span class="ctag cobalt">Pracuj.pl</span><span class="ctag cobalt">lidl.pl/kariera</span><span class="ctag cobalt">OLX Praca</span><span class="ctag cobalt">LinkedIn</span><span class="ctag cobalt">Exterior local</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc-head lime">
+          <span class="cc-badge">Gallup EWA ×3 · Equal Salary · EcoVadis Pt.</span>
+          <div class="cc-name">Żabka Group</div>
+          <div class="cc-parent">CVC Capital Partners · OPV Varsovia 2024</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-grid">
+            <div class="cc-kv"><div class="cc-k">Empleados corp.</div><div class="cc-v">~6.000 + 68K ecosistema</div></div>
+            <div class="cc-kv"><div class="cc-k">Facturación 2024</div><div class="cc-v">~12.000 M PLN</div></div>
+            <div class="cc-kv"><div class="cc-k">Tiendas</div><div class="cc-v">11.793</div></div>
+            <div class="cc-kv"><div class="cc-k">Valores</div><div class="cc-v">Ambición · Apertura · Resp.</div></div>
+          </div>
+          <div class="cc-evp lime">El employer brander más sofisticado del retail polaco. «Empresa de innovación que además gestiona tiendas.» Gallup EWA 3 años consecutivos — única empresa polaca. Program Kariera: becas 6 meses remuneradas (4.730 PLN/mes) a escala nacional. Equal Salary + EcoVadis Platinum.</div>
+          <div class="cc-tags">
+            <span class="ctag orange">LinkedIn 53K+</span><span class="ctag orange">TikTok</span><span class="ctag orange">Instagram</span><span class="ctag orange">zabkagroup.com/careers</span><span class="ctag orange">#pracujwzabce</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc-head orange">
+          <span class="cc-badge">AIESEC Top 3 · junto a Google y EY</span>
+          <div class="cc-name">Kaufland</div>
+          <div class="cc-parent">Schwarz Group · Alemania</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-grid">
+            <div class="cc-kv"><div class="cc-k">Empleados</div><div class="cc-v">~15.000+</div></div>
+            <div class="cc-kv"><div class="cc-k">Facturación 2024</div><div class="cc-v">~13.600 M PLN</div></div>
+            <div class="cc-kv"><div class="cc-k">Tiendas</div><div class="cc-v">250+ hipermercados</div></div>
+            <div class="cc-kv"><div class="cc-k">Gran hito</div><div class="cc-v">Marketplace digital</div></div>
+          </div>
+          <div class="cc-evp orange">La cultura organizativa alemana del Schwarz Group — disciplina, procesos claros, beneficios sólidos — resuena inesperadamente bien entre universitarios. El lanzamiento de su marketplace online se usa en employer branding para atraer talento tech y e-commerce.</div>
+          <div class="cc-tags">
+            <span class="ctag red">Pracuj.pl</span><span class="ctag red">LinkedIn</span><span class="ctag red">Ferias universitarias</span><span class="ctag red">OLX Praca</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc-head dark">
+          <span class="cc-badge">Forbes #6 · Glassdoor 4,4/5</span>
+          <div class="cc-name">Decathlon</div>
+          <div class="cc-parent">Decathlon Group · Francia · EDGE Certified</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-grid">
+            <div class="cc-kv"><div class="cc-k">Empleados PL</div><div class="cc-v">~3.500</div></div>
+            <div class="cc-kv"><div class="cc-k">Glassdoor PL</div><div class="cc-v">4,4 / 5 (+25% sector)</div></div>
+            <div class="cc-kv"><div class="cc-k">Recomendarían</div><div class="cc-v">93% de empleados</div></div>
+            <div class="cc-kv"><div class="cc-k">Accionariado empl.</div><div class="cc-v">52,9% del Grupo</div></div>
+          </div>
+          <div class="cc-evp dark">«Mover a las personas a través de las maravillas del deporte.» Contratar por pasión, formar para habilidades. Empleados prueban todos los productos. Canchas deportivas en tienda. Cultura que recompensa la pasión por encima de la antigüedad. Primera marca deportiva con certificación EDGE.</div>
+          <div class="cc-tags">
+            <span class="ctag cobalt">Pracuj.pl</span><span class="ctag cobalt">LinkedIn</span><span class="ctag cobalt">Glassdoor</span><span class="ctag cobalt">#DecathlonPL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc-head plum">
+          <span class="cc-badge">Universum Top Pick · Bolsa Varsovia</span>
+          <div class="cc-name">LPP Group</div>
+          <div class="cc-parent">Reserved · Sinsay · Cropp · House · Mohito · Gdańsk</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-grid">
+            <div class="cc-kv"><div class="cc-k">Sede</div><div class="cc-v">Gdańsk, Polonia</div></div>
+            <div class="cc-kv"><div class="cc-k">Facturación 2024</div><div class="cc-v">>20.000 M PLN</div></div>
+            <div class="cc-kv"><div class="cc-k">Tiendas globales</div><div class="cc-v">2.200+</div></div>
+            <div class="cc-kv"><div class="cc-k">Posicionamiento</div><div class="cc-v">Campeón polaco global</div></div>
+          </div>
+          <div class="cc-evp plum">«Campeón polaco que conquista el mundo.» Formar parte de una de las empresas polacas que más rápido se internacionaliza. Centro tech en Gdańsk que compite con empresas de software. Reserved genera calor de marca de consumo que se traduce en atractivo como empleador para talento joven.</div>
+          <div class="cc-tags">
+            <span class="ctag red">JustJoin.it</span><span class="ctag red">Pracuj.pl</span><span class="ctag red">LinkedIn</span><span class="ctag red">#LPPcareers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc-head forest">
+          <span class="cc-badge">Friendly Workplace · Universum Ideal Employer</span>
+          <div class="cc-name">IKEA Poland</div>
+          <div class="cc-parent">Ingka Group · Países Bajos · 10+ tiendas</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-grid">
+            <div class="cc-kv"><div class="cc-k">Tiendas PL</div><div class="cc-v">10+ (8 ciudades)</div></div>
+            <div class="cc-kv"><div class="cc-k">Facturación PL</div><div class="cc-v">~5.000 M PLN</div></div>
+            <div class="cc-kv"><div class="cc-k">Modelo laboral</div><div class="cc-v">Co-workers, no empleados</div></div>
+            <div class="cc-kv"><div class="cc-k">Referencia</div><div class="cc-v">Benchmark sectorial EB</div></div>
+          </div>
+          <div class="cc-evp forest">«The IKEA Way» — togetherness, jerarquía plana, beneficios transparentes para «colaboradores». Benchmark en pitches de agencias de employer branding. Especialmente fuerte para candidatos que priorizan el significado y la cultura sobre el salario puro.</div>
+          <div class="cc-tags">
+            <span class="ctag cobalt">Pracuj.pl</span><span class="ctag cobalt">LinkedIn</span><span class="ctag cobalt">Glassdoor</span><span class="ctag cobalt">#IKEAcareer</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 04 QUÉ QUIEREN ──────────────────────────────────────────────────── -->
+  <section class="section up" id="empleados">
+    <div class="sec-head">
+      <div class="sec-num-block">04</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Randstad REBR 2025 · 4.623 encuestados polacos</div>
+        <h2 class="sec-title">Lo que los empleados polacos realmente quieren</h2>
+      </div>
+    </div>
+
+    <p>Los factores de atractivo no han cambiado significativamente respecto a 2024, pero hay movimientos relevantes: la <strong>conciliación vida-trabajo sube del puesto #6 al #4</strong>, y el reconocimiento emerge como la brecha más crítica entre lo que se desea y lo que se recibe.</p>
+
+    <div class="drivers">
+      <div class="dr"><div class="dr-num">1</div><div class="dr-info"><div class="dr-name">Salario y beneficios atractivos</div><div class="dr-track"><div class="dr-fill red" style="width:71%"></div></div></div><div class="dr-pct">71%</div></div>
+      <div class="dr"><div class="dr-num">2</div><div class="dr-info"><div class="dr-name">Ambiente de trabajo agradable</div><div class="dr-track"><div class="dr-fill red" style="width:63%;animation-delay:.06s"></div></div></div><div class="dr-pct">63%</div></div>
+      <div class="dr"><div class="dr-num">3</div><div class="dr-info"><div class="dr-name">Seguridad laboral</div><div class="dr-track"><div class="dr-fill red" style="width:61%;animation-delay:.12s"></div></div></div><div class="dr-pct">61%</div></div>
+      <div class="dr"><div class="dr-num">4</div><div class="dr-info"><div class="dr-name">Conciliación vida-trabajo <span class="dr-tag">↑ Subió del #6</span></div><div class="dr-track"><div class="dr-fill cobalt" style="width:56%;animation-delay:.18s"></div></div></div><div class="dr-pct">56%</div></div>
+      <div class="dr"><div class="dr-num">5</div><div class="dr-info"><div class="dr-name">Desarrollo profesional</div><div class="dr-track"><div class="dr-fill cobalt" style="width:55%;animation-delay:.24s"></div></div></div><div class="dr-pct">55%</div></div>
+      <div class="dr"><div class="dr-num">6</div><div class="dr-info"><div class="dr-name">Equidad e igualdad de oportunidades</div><div class="dr-track"><div class="dr-fill cobalt" style="width:51%;animation-delay:.30s"></div></div></div><div class="dr-pct">51%</div></div>
+      <div class="dr"><div class="dr-num">7</div><div class="dr-info"><div class="dr-name">Participación en formación / reskilling</div><div class="dr-track"><div class="dr-fill red" style="width:48%;animation-delay:.36s"></div></div></div><div class="dr-pct">~48%</div></div>
+      <div class="dr"><div class="dr-num">8</div><div class="dr-info"><div class="dr-name">Solidez financiera de la empresa</div><div class="dr-track"><div class="dr-fill cobalt" style="width:45%;animation-delay:.42s"></div></div></div><div class="dr-pct">~45%</div></div>
+      <div class="dr"><div class="dr-num">9</div><div class="dr-info"><div class="dr-name">Buena reputación</div><div class="dr-track"><div class="dr-fill red" style="width:42%;animation-delay:.48s"></div></div></div><div class="dr-pct">~42%</div></div>
+      <div class="dr"><div class="dr-num">10</div><div class="dr-info"><div class="dr-name">Ubicación conveniente</div><div class="dr-track"><div class="dr-fill cobalt" style="width:40%;animation-delay:.54s"></div></div></div><div class="dr-pct">~40%</div></div>
+    </div>
+
+    <div class="hbox">
+      <div class="hbox-head red">⚡ Brecha crítica de satisfacción — Oportunidades directas para Alcampo</div>
+      <div class="hbox-items">
+        <div class="hbox-row"><span class="hbox-arr red">→</span>Brecha #1 — Desarrollo profesional: el 55% lo quiere, pero menos de la mitad siente que su empleador lo cumple</div>
+        <div class="hbox-row"><span class="hbox-arr red">→</span>Brecha #2 — Remuneración atractiva: el 71% lo quiere; solo ~50% siente que su empleador lo proporciona</div>
+        <div class="hbox-row"><span class="hbox-arr red">→</span>Brecha #3 — ESG: creciente importancia para menores de 35, pero percibida como débil en mayoría de retailers</div>
+        <div class="hbox-row"><span class="hbox-arr red">→</span>Brecha #4 — Reconocimiento: es el principal desmotivador en 2025, <strong>por delante de la remuneración insuficiente</strong></div>
+        <div class="hbox-row"><span class="hbox-arr red">→</span>Implicación clave: Los retailers que cierren las brechas de reconocimiento y desarrollo superarán en retención incluso sin ser líderes salariales</div>
+      </div>
+    </div>
+
+    <div class="sub-title">Diferencias clave por género</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Factor</th><th>Mujeres</th><th>Hombres</th><th>Implicación para retail</th></tr></thead>
+        <tbody>
+          <tr><td>Remuneración atractiva</td><td>74%</td><td>67%</td><td>Transparencia salarial es clave (plantillas mayoritariamente femeninas)</td></tr>
+          <tr><td>Conciliación vida-trabajo</td><td>60%</td><td>51%</td><td>Turnos fijos y predecibles como diferenciador</td></tr>
+          <tr><td>Seguridad laboral</td><td>63%</td><td>58%</td><td>Comunicar la solidez financiera de la empresa</td></tr>
+          <tr><td>Uso de últimas tecnologías</td><td>20%</td><td>27%</td><td>Narrativa tech más relevante para perfiles HQ/tech</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 05 CANALES ──────────────────────────────────────────────────────── -->
+  <section class="section up" id="canales">
+    <div class="sec-head">
+      <div class="sec-num-block">05</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Captación de talento</div>
+        <h2 class="sec-title">Canales de reclutamiento — dónde buscan talento</h2>
+      </div>
+    </div>
+
+    <div class="sub-title">Plataformas digitales polacas</div>
+    <div class="platforms">
+      <div class="plat red">
+        <div class="plat-name">Pracuj.pl</div>
+        <div class="plat-traffic">11M visitas/mes · Principal portal de empleo polaco</div>
+        <div class="plat-for">Cuello blanco y roles de gestión: directores de tienda, regionales, corporativos (RR.HH., finanzas, logística, IT).</div>
+        <span class="plat-tag red">Management</span>
+      </div>
+      <div class="plat orange">
+        <div class="plat-name">OLX Praca</div>
+        <div class="plat-traffic">4,6M+ buscadores activos</div>
+        <div class="plat-for">Cajeros, personal de almacén, dependientes. Alto volumen y respuesta rápida. Esencial para tienda.</div>
+        <span class="plat-tag orange">Operacional</span>
+      </div>
+      <div class="plat cobalt">
+        <div class="plat-name">LinkedIn</div>
+        <div class="plat-traffic">Profesional / senior / internacional</div>
+        <div class="plat-for">Funciones de sede, e-commerce, datos, supply chain, sostenibilidad, marketing.</div>
+        <span class="plat-tag cobalt">Corporativo</span>
+      </div>
+      <div class="plat red">
+        <div class="plat-name">JustJoin.it</div>
+        <div class="plat-traffic">Foco en tecnología e IT</div>
+        <div class="plat-for">Equipos tech de LPP, Żabka, IKEA. Roles de transformación digital retail.</div>
+        <span class="plat-tag red">Tech</span>
+      </div>
+      <div class="plat mid">
+        <div class="plat-name">GoWork.pl</div>
+        <div class="plat-traffic">Glassdoor polaco · Crítico de monitorizar</div>
+        <div class="plat-for">Plataforma de reputación. Primer punto de contacto antes de que un candidato decida aplicar.</div>
+        <span class="plat-tag cobalt">Reputación</span>
+      </div>
+      <div class="plat cobalt">
+        <div class="plat-name">Glassdoor</div>
+        <div class="plat-traffic">Internacional · Candidatos extranjeros</div>
+        <div class="plat-for">Directivos internacionales, expatriados. Clave para multinacionales IKEA, Decathlon, Rossmann.</div>
+        <span class="plat-tag cobalt">Internacional</span>
+      </div>
+      <div class="plat orange">
+        <div class="plat-name">Praca.pl</div>
+        <div class="plat-traffic">1,3M visitas/mes · Generalista</div>
+        <div class="plat-for">Complemento a Pracuj.pl. Especialmente efectivo en ciudades regionales medianas.</div>
+        <span class="plat-tag orange">Regional</span>
+      </div>
+      <div class="plat lime">
+        <div class="plat-name">Web de empleo propia</div>
+        <div class="plat-traffic">Canal directo · Todos los niveles</div>
+        <div class="plat-for">Biedronka, Lidl, Żabka, Decathlon, IKEA tienen portales de empleo propios robustos con contenido EB.</div>
+        <span class="plat-tag red">Directo</span>
+      </div>
+    </div>
+
+    <div class="sub-title">Social media — La nueva frontera del employer branding</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Empresa</th><th>LinkedIn</th><th>Estrategia social EB</th><th>Hashtags / Campañas clave</th></tr></thead>
+        <tbody>
+          <tr><td>Żabka</td><td>53.660+</td><td>La más sofisticada; Instagram y TikTok para Gen Z + LinkedIn para sede HQ</td><td>#pracujwzabce · historias de becarios</td></tr>
+          <tr><td>Biedronka</td><td>30.000+ est.</td><td>Anuncios de transparencia salarial como contenido EB; informes ESG como narrativa</td><td>Posts vinculados a ESG</td></tr>
+          <tr><td>Lidl Polska</td><td>25.000+ est.</td><td>Campañas «Trabajo para años», «LIDLeal»; estrategia video-first</td><td>#PracaWLidl · testimonios de empleados</td></tr>
+          <tr><td>IKEA Polonia</td><td>15.000+ est.</td><td>Contenido cultura-first; narrativa del «coworker»; historias de diversidad</td><td>#IKEAcareer</td></tr>
+          <tr><td>Decathlon</td><td>20.000+ est.</td><td>Contenido de cultura deportiva; historias de pasión; equipos en acción</td><td>#DecathlonPL · retos deportivos</td></tr>
+          <tr><td>LPP / Reserved</td><td>Alta (págs. de marca)</td><td>Contenido moda-y-carrera; narrativa de expansión global</td><td>#LPPcareers · highlight del equipo tech</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 06 FUERA DEL SECTOR ─────────────────────────────────────────────── -->
+  <section class="section up" id="fuera">
+    <div class="sec-head">
+      <div class="sec-num-block">06</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Benchmarking externo</div>
+        <h2 class="sec-title">Lecciones de otros sectores</h2>
+      </div>
+    </div>
+    <p>Entender lo que hacen los mejores employer brands fuera del retail permite identificar prácticas transferibles y las brechas estructurales que el sector debe compensar con otros argumentos.</p>
+
+    <div class="sectors">
+      <div class="sec-card">
+        <div class="sec-card-head red">💻 Tecnología — El referente absoluto</div>
+        <div class="sec-card-body">
+          <p>Google, Microsoft, Intel, Allegro y CD Projekt dominan los rankings porque han industrializado el employer branding con sistemas y presupuestos específicos.</p>
+          <ul class="sec-lessons">
+            <li class="sec-lesson">Transparencia salarial radical — publican horquillas en JustJoin.it directamente</li>
+            <li class="sec-lesson">Contenido generado por empleados a escala — blogs, charlas, podcasts</li>
+            <li class="sec-lesson">Narrativa de «cultura de ingeniería» — trabajo con propósito técnico</li>
+            <li class="sec-lesson">Presupuesto L&D: 5.000–15.000 PLN por empleado al año</li>
+            <li class="sec-lesson">Teletrabajo completo o híbrido como mínimo esperado para oficinas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-card-head cobalt">🚗 Automoción — El playbook de la estabilidad</div>
+        <div class="sec-card-body">
+          <p>Toyota, Volvo, LG Energy Solution dominan Randstad porque ofrecen lo que el retail no puede replicar fácilmente: salarios altos y seguridad laboral a largo plazo.</p>
+          <ul class="sec-lessons">
+            <li class="sec-lesson">Salarios 20–40% por encima de la media del trabajador de tienda retail</li>
+            <li class="sec-lesson">Planes de empleo a 5 años y cláusulas de protección contra despido</li>
+            <li class="sec-lesson">Formación gratuita en idiomas y academias de habilidades</li>
+            <li class="sec-lesson">Comités de empresa europeos — representación visible de los trabajadores</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-card-head orange">🏦 Servicios Financieros — El playbook de beneficios</div>
+        <div class="sec-card-body">
+          <p>ING, PKO, BNP Paribas compiten con paquetes imposibles de igualar directamente. Su lección más transferible está en cómo estructuran el desarrollo profesional.</p>
+          <ul class="sec-lessons">
+            <li class="sec-lesson">Planes médicos privados para toda la familia</li>
+            <li class="sec-lesson">Co-aportaciones a planes de jubilación</li>
+            <li class="sec-lesson">Marcos de competencias muy estructurados y visibles</li>
+            <li class="sec-lesson">Mercados internos de empleo bien comunicados</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-card-head lime">🍔 Fast Food / QSR — El paralelo retail</div>
+        <div class="sec-card-body">
+          <p>McDonald's, KFC y Burger King enfrentan los mismos grupos de talento. Sus innovaciones son directamente replicables para cualquier retailer alimentario.</p>
+          <ul class="sec-lessons">
+            <li class="sec-lesson">McDonald's: itinerario real de cajero a director con historias de empleados reales</li>
+            <li class="sec-lesson">KFC: app de onboarding gamificada; marketing Gen Z aplicado a reclutamiento</li>
+            <li class="sec-lesson">Alta actividad en TikTok e Instagram para 16–25 años</li>
+            <li class="sec-lesson">Hacer el trabajo de entrada «cool» y aspiracional — playbook pendiente para el retail alimentario</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 07 TENDENCIAS ───────────────────────────────────────────────────── -->
+  <section class="section up" id="tendencias">
+    <div class="sec-head">
+      <div class="sec-num-block">07</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Análisis prospectivo</div>
+        <h2 class="sec-title">Tendencias que dan forma al EB retail en Polonia</h2>
+      </div>
+    </div>
+
+    <div class="trends">
+      <div class="trend">
+        <div class="trend-header red">
+          <div class="trend-n">01</div>
+          <div class="trend-title-wrap">
+            <div class="trend-tag-small">Narrativa</div>
+            <div class="trend-title">El Retailer como Empresa Tech</div>
+          </div>
+        </div>
+        <div class="trend-body-wrap">Żabka, LPP y Allegro se posicionan como empresas tecnológicas que gestionan tiendas. Las tiendas Nano autónomas de Żabka, los sistemas de IA de LPP y los algoritmos de Allegro abren un pool de talento tech que nunca aplicaría a un trabajo de «retail».</div>
+      </div>
+      <div class="trend">
+        <div class="trend-header cobalt">
+          <div class="trend-n">02</div>
+          <div class="trend-title-wrap">
+            <div class="trend-tag-small">ESG</div>
+            <div class="trend-title">El ESG como Moneda de Employer Brand</div>
+          </div>
+        </div>
+        <div class="trend-body-wrap">Las credenciales ESG son activos EB crecientes, especialmente para menores de 35 años. EcoVadis Platinum de Żabka, cumplimiento CSRD de Biedronka, EDGE de Decathlon e IKEA circular se usan como herramientas de atracción de talento activamente.</div>
+      </div>
+      <div class="trend">
+        <div class="trend-header orange">
+          <div class="trend-n">03</div>
+          <div class="trend-title-wrap">
+            <div class="trend-tag-small">Legal · 2026</div>
+            <div class="trend-title">Directiva UE de Transparencia Salarial</div>
+          </div>
+        </div>
+        <div class="trend-body-wrap">Implementación completa requerida en 2026. Biedronka ya publica proactivamente sus salarios. La transparencia genera confianza. Las empresas que resistan parecerán defensivas; los early movers obtienen una prima de employer brand duradera.</div>
+      </div>
+      <div class="trend">
+        <div class="trend-header lime">
+          <div class="trend-n">04</div>
+          <div class="trend-title-wrap">
+            <div class="trend-tag-small">Engagement</div>
+            <div class="trend-title">El Déficit de Reconocimiento</div>
+          </div>
+        </div>
+        <div class="trend-body-wrap">Randstad 2025 identifica la falta de reconocimiento como el principal desmotivador, por encima de la remuneración. En retail, donde los directivos supervisan equipos grandes con tiempo limitado, los programas de reconocimiento son la palanca más infrautilizada.</div>
+      </div>
+      <div class="trend">
+        <div class="trend-header plum">
+          <div class="trend-n">05</div>
+          <div class="trend-title-wrap">
+            <div class="trend-tag-small">Generacional</div>
+            <div class="trend-title">La Gen Z en Retail</div>
+          </div>
+        </div>
+        <div class="trend-body-wrap">La cohorte 18–24 que se incorpora al retail polaco es la más exigente: impacto inmediato, historias auténticas vía TikTok e Instagram, rechazo a jerarquías rígidas. Żabka y su Program Kariera son el benchmark sectorial.</div>
+      </div>
+      <div class="trend">
+        <div class="trend-header dark">
+          <div class="trend-n">06</div>
+          <div class="trend-title-wrap">
+            <div class="trend-tag-small">Competencia</div>
+            <div class="trend-title">Presión del E-Commerce</div>
+          </div>
+        </div>
+        <div class="trend-body-wrap">Allegro, Amazon, InPost y e-commerce internacional reclutan del mismo pool de talento, especialmente almacén, logística y datos. Los retailers físicos deben diferenciarse por pertenencia y planes de carrera — no por salario.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 08 RECOMENDACIONES ──────────────────────────────────────────────── -->
+  <section class="section up" id="recomendaciones">
+    <div class="sec-head">
+      <div class="sec-num-block">08</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Guía de acción para Alcampo</div>
+        <h2 class="sec-title">5 Prioridades estratégicas para el mercado polaco</h2>
+      </div>
+    </div>
+
+    <div class="pri-list">
+
+      <div class="pri">
+        <div class="pri-left"><div class="pri-circle red">1</div><div class="pri-line" style="color:var(--red)"></div></div>
+        <div class="pri-right">
+          <div class="pri-title">Construir una EVP diferenciada basada en evidencia real</div>
+          <ul class="pri-items">
+            <li class="pri-item red">Realizar escucha de empleados (encuestas, grupos focales) para todos los tipos de roles y regiones de Polonia</li>
+            <li class="pri-item red">Identificar 2–3 diferenciadores genuinos: no «nos preocupamos por las personas» sino específicos como velocidad del plan de carrera, flexibilidad de turno o impacto comunitario</li>
+            <li class="pri-item red">Validar la EVP externamente frente a percepciones de competidores mediante investigación de marca</li>
+            <li class="pri-item red">Asegurarse de que la EVP hable diferente a cada segmento: personal de tienda vs. sede vs. tech vs. estudiantes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pri">
+        <div class="pri-left"><div class="pri-circle cobalt">2</div><div class="pri-line" style="color:var(--cobalt)"></div></div>
+        <div class="pri-right">
+          <div class="pri-title">Ganar las plataformas donde están los candidatos</div>
+          <ul class="pri-items">
+            <li class="pri-item cobalt">Talento de tienda: OLX Praca, carteles en tienda, publicidad exterior de proximidad, escuelas de FP</li>
+            <li class="pri-item cobalt">Talento directivo y corporativo: Pracuj.pl, LinkedIn, ferias universitarias, web de empleo propia</li>
+            <li class="pri-item cobalt">Gen Z y estudiantes: TikTok, Instagram, programas de prácticas remuneradas, presencia en campus</li>
+            <li class="pri-item cobalt">Talento tech: JustJoin.it, transparencia salarial, presencia en GitHub, blog técnico</li>
+            <li class="pri-item cobalt">Monitorizar y responder a reseñas en GoWork.pl — primer punto de contacto para muchos candidatos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pri">
+        <div class="pri-left"><div class="pri-circle orange">3</div><div class="pri-line" style="color:var(--orange)"></div></div>
+        <div class="pri-right">
+          <div class="pri-title">Certificar y comunicar externamente</div>
+          <ul class="pri-items">
+            <li class="pri-item orange">Apuntar a al menos 2 certificaciones externas anuales (Top Employer Institute + Great Place to Work o Friendly Workplace)</li>
+            <li class="pri-item orange">Usar las certificaciones en todas las ofertas de empleo, bios de redes sociales, LinkedIn y web de empleo</li>
+            <li class="pri-item orange">Realizar la encuesta Q12 de Gallup — el uso de datos de Gallup por parte de Żabka es el benchmark de buenas prácticas</li>
+            <li class="pri-item orange">Participar en los concursos EBEA (Employer Branding Excellence Awards) del HRM Institute polonés</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pri">
+        <div class="pri-left"><div class="pri-circle lime">4</div><div class="pri-line" style="color:var(--lime-dark)"></div></div>
+        <div class="pri-right">
+          <div class="pri-title">Cerrar la brecha del reconocimiento</div>
+          <ul class="pri-items">
+            <li class="pri-item lime">Implementar una herramienta de reconocimiento digital estructurada (peer-to-peer y manager-to-team)</li>
+            <li class="pri-item lime">Formar específicamente a los directivos de primera línea en comportamientos de reconocimiento — aquí es donde la brecha es más amplia en retail</li>
+            <li class="pri-item lime">Celebrar hitos públicamente (aniversarios, ascensos, logros) en redes sociales con consentimiento del empleado</li>
+            <li class="pri-item lime">Vincular el reconocimiento a los valores corporativos para reforzar la coherencia cultural</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pri">
+        <div class="pri-left"><div class="pri-circle red">5</div></div>
+        <div class="pri-right">
+          <div class="pri-title">Aprovechar la narrativa Tech y ESG</div>
+          <ul class="pri-items">
+            <li class="pri-item red">Identificar proyectos tecnológicos dentro de la operación (IA de precios, optimización de rutas, análisis de datos) y crear contenido EB en torno a ellos</li>
+            <li class="pri-item red">Publicar un informe anual de Sostenibilidad/ESG y comercializarlo activamente como activo de employer brand</li>
+            <li class="pri-item red">Buscar certificaciones EcoVadis, EDGE, Equal Salary o similares que aporten validación ESG externa creíble</li>
+            <li class="pri-item red">Incluir ESG en las descripciones de puestos corporativos — es un factor de decisión de candidatos creciente</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 09 COMPARATIVA ─────────────────────────────────────────────────── -->
+  <section class="section up" id="comparativa">
+    <div class="sec-head">
+      <div class="sec-num-block">09</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Resumen ejecutivo</div>
+        <h2 class="sec-title">Comparativa rápida de los principales empleadores</h2>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Empresa</th><th>Mejor ranking</th><th>Certificación clave</th><th>Ancla EVP</th><th>Fortaleza EB</th><th>Punto débil</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Biedronka</td><td>EBEA 2024</td><td>HRM Institute EB Award</td><td>Escala + transparencia salarial</td><td class="td-green">Mayor empleador; subidas salariales como PR; sostenibilidad</td><td class="td-orange">Trabajo percibido como de bajo estatus</td></tr>
+          <tr><td>Lidl Polska</td><td>Top Employer 2024</td><td>Top Employer Institute</td><td>Carrera a largo plazo en retail</td><td class="td-green">«Trabajo para años»; narrativa LIDLeal; video-first</td><td class="td-orange">Menor presencia social que Żabka</td></tr>
+          <tr><td><strong>Żabka</strong></td><td>GPTW + Gallup EWA ×3</td><td>Gallup EWA · Equal Salary · EcoVadis Pt.</td><td>Empresa de innovación + propósito</td><td class="td-green">EB más sofisticado del sector retail; Gallup; historia OPV</td><td class="td-orange">Modelo franquicia complica narrativa de empleador</td></tr>
+          <tr><td>Kaufland</td><td>AIESEC Top 3</td><td>Excelencia RRHH Schwarz Group</td><td>Estabilidad + plan de carrera claro</td><td class="td-green">Fuerza de marca frente a estudiantes; percepción calidad alemana</td><td class="td-orange">Menor visibilidad vs. Lidl/Biedronka</td></tr>
+          <tr><td>Decathlon</td><td>Forbes #6 · Glassdoor 4,4</td><td>EDGE Certification</td><td>Pasión por el deporte + autonomía</td><td class="td-green">Mayor NPS entre retailers PL; orientado a misión; EDGE</td><td class="td-orange">Menor escala; menos roles HQ en Polonia</td></tr>
+          <tr><td>LPP Group</td><td>Universum Top Pick</td><td>Bolsa de Varsovia cotizada</td><td>Campeón polaco que va global</td><td class="td-green">Narrativa de crecimiento internacional; prestigio de moda</td><td class="td-orange">Calor de marca en Reserved/Sinsay vs. sede LPP</td></tr>
+          <tr><td>IKEA Polonia</td><td>Friendly Workplace · Universum</td><td>Universum Ideal Employer</td><td>Cultura democrática liderada por valores</td><td class="td-green">Benchmark global de marca; liderazgo DEI; cultura co-worker</td><td class="td-orange">Ritmo de ascenso percibido como lento</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 10 FUENTES ──────────────────────────────────────────────────────── -->
+  <section class="section up" id="fuentes">
+    <div class="sec-head">
+      <div class="sec-num-block">10</div>
+      <div class="sec-head-right">
+        <div class="sec-eyebrow">Bibliografía</div>
+        <h2 class="sec-title">Fuentes y referencias</h2>
+      </div>
+    </div>
+    <div class="sources">
+      <div class="src">Randstad Employer Brand Research 2025 — Informe Polonia (mayo 2025), 4.623 encuestados, metodología Kantar</div>
+      <div class="src">Forbes Polska / Statista — Mejores Empleadores de Polonia 2025 — 400.000+ evaluaciones</div>
+      <div class="src">Great Place to Work Polonia — datos de certificación y ranking 2023–2025</div>
+      <div class="src">Żabka Group — Informes de Carreras y Anuales 2024; zabkagroup.com/careers</div>
+      <div class="src">Biedronka / Jeronimo Martins — Informe de Sostenibilidad 2024</div>
+      <div class="src">Decathlon Group — Annual Performance Report 2024</div>
+      <div class="src">LPP Group — Informe Anual 2024</div>
+      <div class="src">Top Employer Institute — Directorio de certificación Polonia 2024</div>
+      <div class="src">HRM Institute — Employer Branding Excellence Awards 2024 (EBEA)</div>
+      <div class="src">AIESEC Polska — Resultados del Employer of the Year 2024</div>
+      <div class="src">Glassdoor — Employee reviews, Decathlon Polonia y comparativas sectoriales</div>
+      <div class="src">Pracuj.pl — Resumen del Mercado Laboral Especializado 2024</div>
+      <div class="src">DlaHandlu.pl — Mayores cadenas retail de Polonia 2024–2025</div>
+      <div class="src">Universum Global — Employer Branding Trends 2025</div>
+      <div class="src">Deloitte — Lidl Polska valor añadido para Polonia 2024</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════════════════ -->
+<footer>
+  <strong>Sector Retail en Polonia — Employer Branding</strong><br>
+  Investigación compilada por <span class="red">Claude</span> (Anthropic) para uso interno · Alcampo · Febrero 2026<br>
+  Todos los datos de ranking reflejan las ediciones más recientes disponibles públicamente.<br>
+  Los datos de mercado están sujetos a cambios continuos.
+</footer>
+
+<script>
+// ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.04, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.up').forEach(el => io.observe(el));
+
+// ── ACTIVE NAV ────────────────────────────────────────────────────────────────
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-link');
+
+const navIo = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-38% 0px -58% 0px' });
+
+secs.forEach(s => navIo.observe(s));
+
+// ── BAR ANIMATION TRIGGER ─────────────────────────────────────────────────────
+const barIo = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.dr-fill').forEach((b, i) => {
+        b.style.animationDelay = `${i * 0.07}s`;
+        b.style.animationPlayState = 'running';
+      });
+      barIo.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.drivers').forEach(el => {
+  el.querySelectorAll('.dr-fill').forEach(b => b.style.animationPlayState = 'paused');
+  barIo.observe(el);
+});
+</script>
+</body>
+</html>
